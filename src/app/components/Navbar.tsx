@@ -45,7 +45,7 @@ const Navbar = () => {
           sx={{
             fontSize: "18px",
             fontWeight: "600",
-            color: "white",
+            color: "texty.primary",
             mt: 2,
           }}
         >
