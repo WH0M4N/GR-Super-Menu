@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import HomePageContainer from "./components/HomePageContainer";
 import { Box } from "@mui/material";
 import brickWall from "./images/anastase-maragos-lZzlMYL7Q0Y-unsplash.jpg";
+import Footer from "./components/Footer";
 
 const HomePage = () => {
   return (
@@ -33,6 +34,7 @@ const HomePage = () => {
         <Navbar />
         <HomePageContainer />
       </Box>
+      <Footer />
     </Box>
   );
 };
