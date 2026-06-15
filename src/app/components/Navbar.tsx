@@ -13,7 +13,15 @@ const Navbar = () => {
       }}
     >
       {/* Logo */}
-      <div style={{ zIndex: 2 }}>
+      <div
+        style={{
+          zIndex: 2,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <Image
           src={logo}
           alt="Game Republic logo"
@@ -24,7 +32,7 @@ const Navbar = () => {
         />
         <p
           style={{
-            fontSize: "18px",
+            fontSize: "22px",
             fontWeight: "600",
             color: "#ffffff",
             marginTop: 1,
