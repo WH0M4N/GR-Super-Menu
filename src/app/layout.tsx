@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={estedad.className}
-        style={{ margin: 0, height: "100%", overflow: "hidden" }}
+        style={{ margin: 0, height: "100%", overflow: "auto" }}
       >
         <ThemeRegistry>{children}</ThemeRegistry>
       </body>

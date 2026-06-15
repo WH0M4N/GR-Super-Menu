@@ -23,7 +23,7 @@ const Menues = () => {
         display: "flex",
         justifyContent: "space-around",
         px: 2,
-        mt: 10,
+        mt: 5,
       }}
     >
       {menuOptions.map((menu) => {

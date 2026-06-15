@@ -10,6 +10,9 @@ const HomePage = () => {
     <Box
       sx={{
         minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+
         backgroundImage: `url(${brickWall.src})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -29,12 +32,20 @@ const HomePage = () => {
         sx={{
           position: "relative",
           zIndex: 1,
+          display: "flex",
+          flexDirection: "column",
+          flex: 1,
         }}
       >
         <Navbar />
-        <HomePageContainer />
+
+        {/* Main Content */}
+        <Box sx={{ flex: 1 }}>
+          <HomePageContainer />
+        </Box>
+
+        <Footer />
       </Box>
-      <Footer />
     </Box>
   );
 };
