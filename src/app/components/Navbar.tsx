@@ -35,7 +35,7 @@ const Navbar = () => {
             fontSize: "22px",
             fontWeight: "600",
             color: "#ffffff",
-            marginTop: 1,
+            marginTop: 5,
           }}
         >
           گیم ریپابلیک
