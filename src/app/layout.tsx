@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { estedad } from "@/theme/font";
+import ThemeRegistry from "@/theme/ThemeRegistry";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -14,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={estedad.className} style={{ margin: 0 }}>
-        {children}
+        <ThemeRegistry>{children}</ThemeRegistry>
       </body>
     </html>
   );

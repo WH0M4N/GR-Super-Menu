@@ -1,5 +1,5 @@
 "use client";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React from "react";
 import brickWall from "../images/anastase-maragos-lZzlMYL7Q0Y-unsplash.jpg";
 import logo from "../images/logo.png";
@@ -32,14 +32,26 @@ const Navbar = () => {
         },
       }}
     >
-      <Image
-        src={logo}
-        alt="Game Republic logo"
-        width={100}
-        height={150}
-        priority={true}
-        style={{ zIndex: 2, marginTop: "30px" }}
-      />
+      <Box sx={{ zIndex: 2 }}>
+        <Image
+          src={logo}
+          alt="Game Republic logo"
+          width={100}
+          height={150}
+          priority={true}
+          style={{ marginTop: "30px" }}
+        />
+        <Typography
+          sx={{
+            fontSize: "18px",
+            fontWeight: "600",
+            color: "white",
+            mt: 2,
+          }}
+        >
+          گیم ریپابلیک
+        </Typography>
+      </Box>
     </Box>
   );
 };
