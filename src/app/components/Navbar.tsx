@@ -1,7 +1,6 @@
 "use client";
 import { Box, Typography } from "@mui/material";
 import React from "react";
-import brickWall from "../images/anastase-maragos-lZzlMYL7Q0Y-unsplash.jpg";
 import logo from "../images/logo.png";
 import Image from "next/image";
 
@@ -9,29 +8,14 @@ const Navbar = () => {
   return (
     <Box
       sx={{
-        width: "100%",
-        height: "300px",
-        backgroundImage: `url(${brickWall.src})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        position: "relative",
         display: "flex",
-        alignItems: "start",
-        justifyContent: "center",
-        color: "white",
-        "&::before": {
-          content: '""',
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: "rgba(0, 0, 0, 0.5)",
-          zIndex: 1,
-        },
+        alignItems: "center",
+        justifyContent: "start",
+        flexDirection: "column",
+        color: "text.primary",
       }}
     >
+      {/* Logo */}
       <Box sx={{ zIndex: 2 }}>
         <Image
           src={logo}
@@ -50,6 +34,25 @@ const Navbar = () => {
           }}
         >
           گیم ریپابلیک
+        </Typography>
+      </Box>
+
+      {/* Open & closing times */}
+      <Box
+        sx={{
+          width: "100%",
+          zIndex: 2,
+          textAlign: "end",
+          p: "4px 12px",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <Typography sx={{ color: "text.secondary" }}>
+          شنبه تا چهارشنبه ۱۴ تا ۱
+        </Typography>
+        <Typography sx={{ color: "text.secondary", mt: "3px" }}>
+          پنجشنبه و جمعه ۱۲ تا ۱
         </Typography>
       </Box>
     </Box>

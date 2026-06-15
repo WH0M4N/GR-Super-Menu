@@ -30,7 +30,7 @@ const theme = createTheme({
 
     h6: {
       fontWeight: 600,
-      letterSpacing: "0.5px",
+      // letterSpacing: "0.5px",
     },
     button: {
       textTransform: "none",
