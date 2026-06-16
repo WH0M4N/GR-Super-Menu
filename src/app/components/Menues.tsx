@@ -3,11 +3,12 @@ import { Box, Typography } from "@mui/material";
 import { StaticImageData } from "next/image";
 import games from "../images/boardgame-playing.jpeg";
 import foods from "../images/main-food-section-image.jpg";
+import Link from "next/link";
 
 interface Props {
   image: StaticImageData;
   title: string;
-  // route: string;
+  route: string;
 }
 
 const Menues = () => {
@@ -30,13 +31,20 @@ const Menues = () => {
       }}
     >
       {menuOptions.map((menu) => {
-        return <MenuCard image={menu.image} title={menu.title} key={menu.id} />;
+        return (
+          <MenuCard
+            image={menu.image}
+            title={menu.title}
+            route={menu.route}
+            key={menu.id}
+          />
+        );
       })}
     </Box>
   );
 };
 
-function MenuCard({ image, title }: Props) {
+function MenuCard({ image, title, route }: Props) {
   return (
     <Box
       sx={{
@@ -63,11 +71,22 @@ function MenuCard({ image, title }: Props) {
         },
       }}
     >
-      <Typography
-        sx={{ zIndex: 2, color: "text.primary", fontSize: "22px !important" }}
+      <Link
+        href={route}
+        style={{
+          width: "100%",
+          height: "100%",
+          textDecoration: "none",
+          zIndex: 2,
+          color: "text.primary",
+          fontSize: "24px !important",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
       >
-        {title}
-      </Typography>
+        <Typography>{title}</Typography>
+      </Link>
     </Box>
   );
 }
