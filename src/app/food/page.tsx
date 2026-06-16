@@ -1,9 +1,33 @@
-import React from 'react'
+"use client";
+import { Box } from "@mui/material";
+import wavyBg from "../images/uiPIu.jpg";
 
 const FoodPage = () => {
   return (
-    <div>FoodPage</div>
-  )
-}
+    <Box
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
 
-export default FoodPage
+        backgroundImage: `url(${wavyBg.src})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "repeat",
+        position: "relative",
+
+        "&::before": {
+          content: '""',
+          position: "absolute",
+          inset: 0,
+          backgroundColor: "rgba(0, 0, 0, 0.7)",
+          zIndex: 0,
+        },
+      }}
+    >
+      FoodPage
+    </Box>
+  );
+};
+
+export default FoodPage;

@@ -10,12 +10,14 @@ const theme = createTheme({
     },
 
     secondary: {
-      main: "#f57c00", // brick orange accent
+      main: "#d36a1e", // ← darker brick orange
+      light: "#e68a4b",
+      dark: "#b55a18",
     },
 
     background: {
       default: "#0d0d0d", // deep black base
-      paper: "rgba(0,0,0,0.6)", // overlays on image
+      paper: "rgba(0,0,0,0.65)", // overlays on image
     },
 
     text: {
