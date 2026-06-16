@@ -3,7 +3,9 @@ import Menues from "./Menues";
 
 const HomePageContainer = () => {
   return (
-    <div>
+    <div style={{ textAlign: "center" }}>
+      <p style={{ fontSize: "20px" }}>!خوش اومدی</p>
+      <p style={{ fontSize: "20px" }}>اول کدوم منو رو میخوای ببینی؟</p>
       <Menues />
     </div>
   );

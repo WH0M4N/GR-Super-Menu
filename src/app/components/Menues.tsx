@@ -21,9 +21,12 @@ const Menues = () => {
       sx={{
         width: "100%",
         display: "flex",
+        flexDirection: "column",
         justifyContent: "space-around",
+        alignItems: "center",
         px: 2,
         mt: 5,
+        gap: 4,
       }}
     >
       {menuOptions.map((menu) => {
@@ -37,8 +40,9 @@ function MenuCard({ image, title }: Props) {
   return (
     <Box
       sx={{
-        width: "45%",
-        height: "350px",
+        width: "100%",
+        maxWidth: "600px",
+        height: "200px",
         backgroundImage: `url(${image.src})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
@@ -54,7 +58,7 @@ function MenuCard({ image, title }: Props) {
           content: '""',
           position: "absolute",
           inset: 0,
-          backgroundColor: "rgba(0, 0, 0, 0.6)",
+          backgroundColor: "rgba(0, 0, 0, 0.7)",
           zIndex: 0,
         },
       }}

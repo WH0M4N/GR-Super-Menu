@@ -47,7 +47,7 @@ const Navbar = () => {
         style={{
           width: "100%",
           zIndex: 2,
-          textAlign: "end",
+          textAlign: "center",
           padding: "4px 12px",
           display: "flex",
           flexDirection: "column",
