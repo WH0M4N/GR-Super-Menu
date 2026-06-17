@@ -1,6 +1,8 @@
 "use client";
 import { Box } from "@mui/material";
-import wavyBg from "../images/uiPIu.jpg";
+import wavyBg from "../images/wavy.jpg";
+import FoodCard from "../components/FoodCard";
+import { foods } from "@/data/mockData";
 
 const FoodPage = () => {
   return (
@@ -9,12 +11,14 @@ const FoodPage = () => {
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
+        alignItems: "center",
 
         backgroundImage: `url(${wavyBg.src})`,
+        backgroundRepeat: "repeat-y",
+        backgroundPosition: "top center",
         backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "repeat",
         position: "relative",
+        padding: "40px",
 
         "&::before": {
           content: '""',
@@ -23,9 +27,15 @@ const FoodPage = () => {
           backgroundColor: "rgba(0, 0, 0, 0.7)",
           zIndex: 0,
         },
+
+        "& > *": {
+          zIndex: 1,
+        },
       }}
     >
-      FoodPage
+      {foods.map((food, idx) => {
+        return <FoodCard food={food} key={food.id} foodIdx={idx} />;
+      })}
     </Box>
   );
 };

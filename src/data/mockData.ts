@@ -1,3 +1,12 @@
+export interface Food {
+  id: number;
+  title: string;
+  desc: string;
+  baseTaste: string | null;
+  price: number;
+  image: string;
+}
+
 export const games = [];
 export const foods = [
   {
