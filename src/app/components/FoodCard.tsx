@@ -1,10 +1,9 @@
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import randomFoodImage from "../images/random-food-pic.png";
+import randomFoodImage from "../images/donar-1-300x300.jpg";
 import { Food } from "@/data/mockData";
 
 const FoodCard = ({ food, foodIdx }: { food: Food; foodIdx: number }) => {
-
   return (
     <Box
       sx={{
@@ -37,13 +36,13 @@ const FoodCard = ({ food, foodIdx }: { food: Food; foodIdx: number }) => {
             ...(foodIdx % 2 === 1
               ? {
                   left: 45,
-                  pl: 8,
-                  pr: 2,
+                  pl: 10,
+                  pr: 3,
                 }
               : {
                   right: 45,
-                  pl: 2,
-                  pr: 8,
+                  pl: 3,
+                  pr: 10,
                   justifyContent: "flex-end",
                   textAlign: "right",
                 }),
@@ -67,8 +66,8 @@ const FoodCard = ({ food, foodIdx }: { food: Food; foodIdx: number }) => {
 
             ...(foodIdx % 2 === 1 ? { left: 0 } : { right: 0 }),
 
-            width: 90,
-            height: 90,
+            width: 110,
+            height: 110,
             borderRadius: "50%",
             overflow: "hidden",
             border: "4px solid white",
