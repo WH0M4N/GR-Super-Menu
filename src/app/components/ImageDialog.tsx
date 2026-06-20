@@ -48,8 +48,45 @@ const ImageDialog = ({ isOpen, setOpen, image, title }: Props) => {
           onClick={() => setOpen(false)}
           sx={{
             position: "absolute",
-            top: 20,
-            right: 10,
+
+            "@media (max-width: 270px)": {
+              display: "none",
+            },
+
+            "@media (min-width: 270px) and (max-width: 320px)": {
+              top: 55,
+              right: 20,
+            },
+
+            "@media (min-width: 320px) and (max-width: 340px)": {
+              top: 45,
+              right: 20,
+            },
+
+            "@media (min-width: 340px) and (max-width: 360px)": {
+              top: 35,
+              right: 20,
+            },
+
+            "@media (min-width: 360px) and (max-width: 380px)": {
+              top: 35,
+              right: 20,
+            },
+
+            "@media (min-width: 380px) and (max-width: 420px)": {
+              top: 25,
+              right: 20,
+            },
+
+            "@media (min-width: 420px) and (max-width: 480px)": {
+              top: 15,
+              right: 30,
+            },
+
+            "@media (min-width: 480px)": {
+              display: "none",
+            },
+
             zIndex: 100,
           }}
         >
