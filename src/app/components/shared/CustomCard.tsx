@@ -2,7 +2,8 @@
 import { Food, Game } from "@/data/mockData";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+import ImageDialog from "../ImageDialog";
 
 interface Props {
   cardItem: Food | Game;
@@ -10,6 +11,8 @@ interface Props {
 }
 
 const CustomCard = ({ cardItem, idx }: Props) => {
+  const [isOpen, setOpen] = useState(false);
+
   return (
     <Box
       sx={{
@@ -161,10 +164,12 @@ const CustomCard = ({ cardItem, idx }: Props) => {
         </Box>
 
         <Box
+          onClick={() => setOpen(true)}
           sx={{
             position: "absolute",
             top: "50%",
             transform: "translateY(-50%)",
+            cursor: "pointer",
 
             ...(idx % 2 === 1 ? { left: 0 } : { right: 0 }),
 
@@ -178,15 +183,21 @@ const CustomCard = ({ cardItem, idx }: Props) => {
             bgcolor: "white",
             zIndex: 2,
             flexShrink: 0,
-          }}
+          }}  
         >
           <Image
             src={cardItem.image}
-            alt="Element image"
+            alt={cardItem.title}
             fill
             style={{ objectFit: "cover" }}
           />
         </Box>
+        <ImageDialog
+          image={cardItem.image}
+          isOpen={isOpen}
+          setOpen={setOpen}
+          title={cardItem.title}
+        />
       </Box>
     </Box>
   );
