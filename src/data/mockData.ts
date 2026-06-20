@@ -22,7 +22,7 @@ export const foods = [
     title: "زرشک پلو با مرغ",
     desc: "برنج زعفرانی با زرشک و مرغ آبپز شده",
     baseTaste: "ترش و ملایم",
-    price: 250000,
+    price: 250,
     image: randomImage,
   },
   {
@@ -30,7 +30,7 @@ export const foods = [
     title: "قورمه سبزی",
     desc: "خورش سبزیجات معطر با گوشت گوسفند و لوبیا",
     baseTaste: "خوش‌طعم و معطر",
-    price: 320000,
+    price: 320,
     image: randomImage,
   },
   {
@@ -38,7 +38,7 @@ export const foods = [
     title: "جوجه کباب",
     desc: "سینه مرغ کبابی با زعفران و کره",
     baseTaste: "شور و زعفرانی",
-    price: 280000,
+    price: 280,
     image: randomImage,
   },
   {
@@ -46,7 +46,7 @@ export const foods = [
     title: "ماست و خیار",
     desc: "ماست سرد با خیار رنده شده و نعنا",
     baseTaste: "ترش و خنک",
-    price: 90000,
+    price: 90,
     image: randomImage,
   },
   {
@@ -54,7 +54,7 @@ export const foods = [
     title: "زولبیا و بامیه",
     desc: "شیرینی سرخ کرده با شربت زعفرانی",
     baseTaste: "شیرین و ترد",
-    price: 150000,
+    price: 150,
     image: randomImage,
   },
   {
@@ -62,7 +62,7 @@ export const foods = [
     title: "آش رشته",
     desc: "آش غلیظ با رشته، حبوبات و کشک",
     baseTaste: "ملایم و کشکی",
-    price: 180000,
+    price: 180,
     image: randomImage,
   },
   {
@@ -70,7 +70,7 @@ export const foods = [
     title: "کباب برگ",
     desc: "گوشت گوسفند کبابی با ادویه مخصوص",
     baseTaste: "شور و گوشتی",
-    price: 350000,
+    price: 350,
     image: randomImage,
   },
   {
@@ -78,7 +78,7 @@ export const foods = [
     title: "ته چین مرغ",
     desc: "برنج زعفرانی با لایه ترد و مرغ",
     baseTaste: "زعفرانی و ملایم",
-    price: 290000,
+    price: 290,
     image: randomImage,
   },
   {
@@ -86,7 +86,7 @@ export const foods = [
     title: "فالوده شیرازی",
     desc: "نودل نشاسته‌ای با شربت گلاب و لیمو",
     baseTaste: "شیرین و خنک",
-    price: 120000,
+    price: 120,
     image: randomImage,
   },
   {
@@ -94,7 +94,7 @@ export const foods = [
     title: "دیزی",
     desc: "خورش سنتی با گوشت، نخود و سیب‌زمینی در دیگ سنگی",
     baseTaste: "شور و مقوی",
-    price: 200000,
+    price: 200,
     image: randomImage,
   },
 ];
