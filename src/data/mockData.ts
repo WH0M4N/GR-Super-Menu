@@ -7,7 +7,8 @@ export interface Food {
   desc: string;
   image: string | StaticImageData;
   category: string;
-  baseTaste: string | null;
+  isWeeklyOffer?: boolean;
+  baseTaste?: string | null;
   price: number;
 }
 
@@ -25,6 +26,7 @@ export const foods = [
     price: 250,
     image: randomImage,
     category: "هات داگ",
+    isWeeklyOffer: false,
   },
   {
     id: 2,
@@ -34,6 +36,7 @@ export const foods = [
     price: 320,
     image: randomImage,
     category: "هات داگ",
+    isWeeklyOffer: false,
   },
   {
     id: 3,
@@ -43,6 +46,7 @@ export const foods = [
     price: 280,
     image: randomImage,
     category: "نوشیدنی",
+    isWeeklyOffer: false,
   },
   {
     id: 4,
@@ -52,6 +56,7 @@ export const foods = [
     price: 90,
     image: randomImage,
     category: "دمنوش",
+    isWeeklyOffer: true,
   },
   {
     id: 5,
@@ -61,6 +66,7 @@ export const foods = [
     price: 150,
     image: randomImage,
     category: "پیتزا",
+    isWeeklyOffer: false,
   },
   {
     id: 6,
@@ -70,6 +76,7 @@ export const foods = [
     price: 180,
     image: randomImage,
     category: "پنینی",
+    isWeeklyOffer: false,
   },
   {
     id: 7,
@@ -79,6 +86,7 @@ export const foods = [
     price: 350,
     image: randomImage,
     category: "استیک",
+    isWeeklyOffer: false,
   },
   {
     id: 8,
@@ -88,6 +96,7 @@ export const foods = [
     price: 290,
     image: randomImage,
     category: "پیش غذا",
+    isWeeklyOffer: false,
   },
   {
     id: 9,
@@ -97,6 +106,7 @@ export const foods = [
     price: 120,
     image: randomImage,
     category: "اسموتی",
+    isWeeklyOffer: false,
   },
   {
     id: 10,
@@ -106,5 +116,6 @@ export const foods = [
     price: 200,
     image: randomImage,
     category: "ماکتیل",
+    isWeeklyOffer: false,
   },
 ];

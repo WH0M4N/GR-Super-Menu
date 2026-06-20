@@ -12,6 +12,7 @@ interface Props {
 
 const CustomCard = ({ cardItem, idx }: Props) => {
   const [isOpen, setOpen] = useState(false);
+  const isWeeklyOffer = cardItem.isWeeklyOffer ? true : false;
 
   return (
     <Box
@@ -41,7 +42,13 @@ const CustomCard = ({ cardItem, idx }: Props) => {
             height: "100%",
             width: "calc(100% - 40px)",
             borderRadius: 3,
-            bgcolor: "rgba(255,255,255,0.08)",
+            bgcolor: isWeeklyOffer
+              ? "rgba(255, 215, 0, 0.2)"
+              : "rgba(255,255,255,0.08)",
+            border: isWeeklyOffer ? "1.5px solid #FFD54F" : "none",
+            boxShadow: isWeeklyOffer
+              ? "0 0 20px rgba(255, 215, 0, 0.5)"
+              : "none",
             display: "flex",
             alignItems: "center",
 
@@ -162,8 +169,11 @@ const CustomCard = ({ cardItem, idx }: Props) => {
 
             borderRadius: "50%",
             overflow: "hidden",
-            border: { xs: "3px solid white", md: "4px solid white" },
-            bgcolor: "white",
+            border: {
+              xs: isWeeklyOffer ? "3px solid #FFD54F" : "3px solid white",
+              md: isWeeklyOffer ? "4px solid #FFD54F" : "4px solid white",
+            },
+            bgcolor: isWeeklyOffer ? "#FFD54F" : "white",
             zIndex: 2,
             flexShrink: 0,
           }}

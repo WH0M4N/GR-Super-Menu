@@ -3,8 +3,12 @@ import { foods } from "@/data/mockData";
 import BackgroundBox from "../components/shared/BackgroundBox";
 import CategoryHorizMenu from "../components/CategoryHorizMenu";
 import FoodItems from "../components/FoodItems";
+import { Box, Typography } from "@mui/material";
+import CustomCard from "../components/shared/CustomCard";
+import WeeklyOfferText from "../components/WeeklyOfferText";
 
 const FoodPage = () => {
+  const mostOrderedFood = foods.find((food) => food.isWeeklyOffer);
   // categories will be fetched later
   const categories = [...new Set(foods.map((food) => food.category))];
 
@@ -22,6 +26,9 @@ const FoodPage = () => {
         categories={categories}
         scrollToCategory={scrollToCategory}
       />
+
+      {mostOrderedFood && <WeeklyOfferText mostOrdered={mostOrderedFood} />}
+
       <FoodItems foods={foods} categories={categories} />
     </BackgroundBox>
   );
