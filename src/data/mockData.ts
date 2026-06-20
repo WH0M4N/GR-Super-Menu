@@ -24,7 +24,7 @@ export const foods = [
     baseTaste: "ترش و ملایم",
     price: 250,
     image: randomImage,
-    category: "هات داگ"
+    category: "هات داگ",
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ export const foods = [
     baseTaste: "خوش‌طعم و معطر",
     price: 320,
     image: randomImage,
-    category: "چیکن"
+    category: "هات داگ",
   },
   {
     id: 3,
@@ -42,7 +42,7 @@ export const foods = [
     baseTaste: "شور و زعفرانی",
     price: 280,
     image: randomImage,
-    category: "نوشیدنی"
+    category: "نوشیدنی",
   },
   {
     id: 4,
@@ -51,7 +51,7 @@ export const foods = [
     baseTaste: "ترش و خنک",
     price: 90,
     image: randomImage,
-    category: "دمنوش"
+    category: "دمنوش",
   },
   {
     id: 5,
@@ -60,7 +60,7 @@ export const foods = [
     baseTaste: "شیرین و ترد",
     price: 150,
     image: randomImage,
-    category: "پیتزا"
+    category: "پیتزا",
   },
   {
     id: 6,
@@ -69,7 +69,7 @@ export const foods = [
     baseTaste: "ملایم و کشکی",
     price: 180,
     image: randomImage,
-    category: "پنینی"
+    category: "پنینی",
   },
   {
     id: 7,
@@ -78,7 +78,7 @@ export const foods = [
     baseTaste: "شور و گوشتی",
     price: 350,
     image: randomImage,
-    category: "استیک"
+    category: "استیک",
   },
   {
     id: 8,
@@ -87,7 +87,7 @@ export const foods = [
     baseTaste: "زعفرانی و ملایم",
     price: 290,
     image: randomImage,
-    category: "پیش غذا"
+    category: "پیش غذا",
   },
   {
     id: 9,
@@ -96,7 +96,7 @@ export const foods = [
     baseTaste: "شیرین و خنک",
     price: 120,
     image: randomImage,
-    category: "اسموتی"
+    category: "اسموتی",
   },
   {
     id: 10,
@@ -105,6 +105,6 @@ export const foods = [
     baseTaste: "شور و مقوی",
     price: 200,
     image: randomImage,
-    category: "ماکتیل"
+    category: "ماکتیل",
   },
 ];

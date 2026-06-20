@@ -75,24 +75,6 @@ const CustomCard = ({ cardItem, idx }: Props) => {
               {cardItem.title}
             </Typography>
 
-            {/* Just in case if base taste idea was approved */}
-
-            {/* {cardItem.baseTaste && (
-              <Typography
-                sx={{
-                  fontSize: {
-                    xs: "0.72rem",
-                    sm: "0.8rem",
-                    md: "0.875rem",
-                  },
-                  lineHeight: 1.3,
-                  opacity: 0.85,
-                }}
-              >
-                {cardItem.baseTaste}
-              </Typography>
-            )} */}
-
             {cardItem.desc && (
               <Typography
                 sx={{
@@ -114,6 +96,7 @@ const CustomCard = ({ cardItem, idx }: Props) => {
               </Typography>
             )}
 
+            {/* Games wont have any price */}
             {cardItem.price && (
               <Box
                 sx={{
@@ -183,7 +166,7 @@ const CustomCard = ({ cardItem, idx }: Props) => {
             bgcolor: "white",
             zIndex: 2,
             flexShrink: 0,
-          }}  
+          }}
         >
           <Image
             src={cardItem.image}
