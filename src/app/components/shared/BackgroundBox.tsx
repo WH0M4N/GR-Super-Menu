@@ -17,7 +17,9 @@ const BackgroundBox = ({ children }: { children: ReactNode }) => {
         backgroundPosition: "top center",
         backgroundSize: "cover",
         position: "relative",
-        padding: "40px",
+        px: { xs: 1, sm: 2, md: 5 },
+        py: 5,
+        overflowX: "hidden",
 
         "&::before": {
           content: '""',

@@ -1,14 +1,28 @@
 "use client";
 import { foods } from "@/data/mockData";
 import BackgroundBox from "../components/shared/BackgroundBox";
-import CustomCard from "../components/shared/CustomCard";
+import CategoryHorizMenu from "../components/CategoryHorizMenu";
+import FoodItems from "../components/FoodItems";
 
 const FoodPage = () => {
+  // categories will be fetched later
+  const categories = [...new Set(foods.map((food) => food.category))];
+
+  // scroll to the selected category
+  const scrollToCategory = (category: string) => {
+    document.getElementById(`category-${category}`)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <BackgroundBox>
-      {foods.map((food, idx) => {
-        return <CustomCard cardItem={food} key={food.id} idx={idx} />;
-      })}
+      <CategoryHorizMenu
+        categories={categories}
+        scrollToCategory={scrollToCategory}
+      />
+      <FoodItems foods={foods} categories={categories} />
     </BackgroundBox>
   );
 };

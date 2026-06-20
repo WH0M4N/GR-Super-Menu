@@ -1,3 +1,4 @@
+"use client";
 import { Food, Game } from "@/data/mockData";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
@@ -8,7 +9,7 @@ interface Props {
   idx: number;
 }
 
-const CustomCard = ({ idx, cardItem }: Props) => {
+const CustomCard = ({ cardItem, idx }: Props) => {
   return (
     <Box
       sx={{
@@ -131,7 +132,7 @@ const CustomCard = ({ idx, cardItem }: Props) => {
                       xs: 1,
                       sm: 1.2,
                     },
-                    mx: '3px'
+                    mx: "3px",
                   }}
                 >
                   تومن
