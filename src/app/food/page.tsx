@@ -1,13 +1,13 @@
 "use client";
-import FoodCard from "../components/FoodCard";
 import { foods } from "@/data/mockData";
 import BackgroundBox from "../components/shared/BackgroundBox";
+import CustomCard from "../components/shared/CustomCard";
 
 const FoodPage = () => {
   return (
     <BackgroundBox>
       {foods.map((food, idx) => {
-        return <FoodCard food={food} key={food.id} foodIdx={idx} />;
+        return <CustomCard cardItem={food} key={food.id} idx={idx} />;
       })}
     </BackgroundBox>
   );
