@@ -31,7 +31,7 @@ const CustomGameCard = ({ cardItem, idx }: Props) => {
           maxWidth: 500,
 
           // responsive height
-          minHeight: { xs: 140, sm: 130, md: 140 },
+          minHeight: "180px",
         }}
       >
         <Box
@@ -108,11 +108,29 @@ const CustomGameCard = ({ cardItem, idx }: Props) => {
                 flexDirection: "column",
                 justifyContent: "center",
                 alignItems: "flex-end",
-                gap: .3,
+                gap: 1.5,
                 mt: 2,
-                overflowY : "hidden"
+                overflowY: "hidden",
               }}
             >
+              <Typography
+                sx={{
+                  display: "flex",
+                  flexDirection: "row",
+                  width: "100%",
+                  justifyContent: "space-between",
+                  fontWeight: 700,
+                  fontSize: {
+                    xs: "0.7rem",
+                    sm: ".8rem",
+                    md: ".9rem",
+                  },
+                  lineHeight: 1.1,
+                }}
+              >
+                <span>{`${cardItem.playerCount}`}</span>
+                <span>: تعداد نفرات</span>
+              </Typography>
               <Typography
                 sx={{
                   fontWeight: 700,
@@ -124,15 +142,24 @@ const CustomGameCard = ({ cardItem, idx }: Props) => {
                   lineHeight: 1.1,
                 }}
               >
-               : ژانر
+                : ژانر
               </Typography>
+
               <Box
                 sx={{
                   display: "flex",
+                  width: "100%",
                   gap: "5px",
                   flexWrap: "wrap",
                   marginTop: "8px",
-                  overflowY: "hidden",
+                  alignItems: "flex-start",
+                  overflowY: "auto",
+                  scrollbarWidth: "none", // Firefox
+                  msOverflowStyle: "none", // IE/old Edge
+                  "&::-webkit-scrollbar": {
+                    display: "none", // Chrome, Safari, Edge
+                  },
+                  height: "49px",
                   justifyContent: `${
                     idx % 2 === 1 ? "flex-end" : "flex-start"
                   }`,
@@ -142,7 +169,26 @@ const CustomGameCard = ({ cardItem, idx }: Props) => {
                 }}
               >
                 {cardItem.genre.map((eachGenre, index) => (
-                  <Chip key={index} label={eachGenre} variant="outlined" />
+                  <Chip
+                    size="small"
+                    key={index}
+                    label={`${eachGenre}`}
+                    variant="outlined"
+                    sx={{
+                      "& .MuiChip-label": {
+                        whiteSpace: "nowrap",
+                        overflowX: "auto",
+                        overflowY: "hidden",
+                        textOverflow: "ellipsis",
+                        maxWidth: "80px",
+                        scrollbarWidth: "none", // Firefox
+                        msOverflowStyle: "none", // IE/old Edge
+                        "&::-webkit-scrollbar": {
+                          display: "none", // Chrome, Safari, Edge
+                        },
+                      },
+                    }}
+                  />
                 ))}
               </Box>
             </Box>
