@@ -1,9 +1,16 @@
 "use client";
 import { Box } from "@mui/material";
 import wavyBg from "../../images/wavy.jpg";
+import wavyBgFlip from "../../images/wavy-flip.jpg";
 import { ReactNode } from "react";
 
-const BackgroundBox = ({ children }: { children: ReactNode }) => {
+const BackgroundBox = ({
+  children,
+  flip,
+}: {
+  children: ReactNode;
+  flip?: boolean;
+}) => {
   return (
     <Box
       sx={{
@@ -11,8 +18,7 @@ const BackgroundBox = ({ children }: { children: ReactNode }) => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-
-        backgroundImage: `url(${wavyBg.src})`,
+        backgroundImage: `url(${flip ? wavyBgFlip.src : wavyBg.src})`,
         backgroundRepeat: "repeat-y",
         backgroundPosition: "top center",
         backgroundSize: "cover",

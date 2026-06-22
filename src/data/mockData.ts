@@ -1,5 +1,6 @@
 import { StaticImageData } from "next/image";
 import randomImage from "../app/images/donar-1-300x300.jpg";
+import randomGameImage from "../app/images/boardgame-playing.jpeg";
 
 export interface Food {
   id: number;
@@ -12,11 +13,100 @@ export interface Food {
   price: number;
 }
 
-export interface Game extends Omit<Food, "baseTaste, price "> {
-  player: string;
+export enum GameGenre {
+  Strategy = "Strategy",
+  Family = "Family",
+  Party = "Party",
+  Economic = "Economic",
+  Cooperative = "Cooperative",
 }
 
-export const games = [];
+// const playerCountRegex = /^\d+(?:-\d+)?$/;
+export interface Game {
+  id: number;
+  title: string;
+  desc: string;
+  image: string | StaticImageData;
+  genre: GameGenre[];
+  playerCount: string;
+  isWeeklyOffer?: boolean;
+}
+
+export const games: Game[] = [
+  {
+    id: 1,
+    title: "کاتان",
+    desc: "بازی مدیریت منابع و ساخت شهر.",
+    image: randomGameImage,
+    genre: [GameGenre.Strategy, GameGenre.Economic],
+    playerCount: "3",
+    isWeeklyOffer: true,
+  },
+  {
+    id: 2,
+    title: "کدنیمز",
+    desc: "بازی گروهی حدس کلمات.",
+    image: randomGameImage,
+    genre: [GameGenre.Party, GameGenre.Family],
+    playerCount: "2-8",
+    isWeeklyOffer: false,
+  },
+  {
+    id: 3,
+    title: "پندمیک",
+    desc: "همکاری برای نجات جهان.",
+    image: randomGameImage,
+    genre: [GameGenre.Cooperative, GameGenre.Strategy],
+    playerCount: "2",
+    isWeeklyOffer: false,
+  },
+  {
+    id: 4,
+    title: "تیکت تو راید",
+    desc: "ساخت مسیرهای ریلی و کسب امتیاز.",
+    image: randomGameImage,
+    genre: [GameGenre.Family, GameGenre.Strategy],
+    playerCount: "2-5",
+    isWeeklyOffer: false,
+  },
+  {
+    id: 5,
+    title: "اسپلندور",
+    desc: "رقابت برای جمع‌آوری ثروت.",
+    image: randomGameImage,
+    genre: [GameGenre.Economic, GameGenre.Strategy],
+    playerCount: "2-4",
+    isWeeklyOffer: false,
+  },
+  {
+    id: 6,
+    title: "شطرنج",
+    desc: "نبرد فکری دو نفره.",
+    image: randomGameImage,
+    genre: [GameGenre.Strategy],
+    playerCount: "2",
+    isWeeklyOffer: false,
+  },
+  {
+    id: 7,
+    title: "مونوپولی",
+    desc: "خرید و فروش املاک.",
+    image: randomGameImage,
+    genre: [GameGenre.Family, GameGenre.Economic],
+    playerCount: "2-6",
+    isWeeklyOffer: false,
+  },
+  {
+    id: 8,
+    title: "اونو",
+    desc: "بازی کارتی سریع و سرگرم‌کننده.",
+    image: randomGameImage,
+    genre: [GameGenre.Party, GameGenre.Family],
+    playerCount: "2-10",
+    isWeeklyOffer: false,
+  },
+];
+
 export const foods = [
   {
     id: 1,

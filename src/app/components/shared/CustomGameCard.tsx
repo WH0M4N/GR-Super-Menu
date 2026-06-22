@@ -1,19 +1,18 @@
 "use client";
-import { Food, Game } from "@/data/mockData";
-import { Box, Typography } from "@mui/material";
+import { Game } from "@/data/mockData";
+import { Box, Chip, Grid, Typography } from "@mui/material";
 import Image from "next/image";
-import React, { useState } from "react";
+import { useState } from "react";
 import ImageDialog from "../ImageDialog";
 
 interface Props {
-  cardItem: Food;
+  cardItem: Game;
   idx: number;
 }
 
-const CustomCard = ({ cardItem, idx }: Props) => {
+const CustomGameCard = ({ cardItem, idx }: Props) => {
   const [isOpen, setOpen] = useState(false);
   const isWeeklyOffer = cardItem.isWeeklyOffer ? true : false;
-
   return (
     <Box
       sx={{
@@ -32,7 +31,7 @@ const CustomCard = ({ cardItem, idx }: Props) => {
           maxWidth: 500,
 
           // responsive height
-          minHeight: { xs: 140, sm: 110, md: 100 },
+          minHeight: { xs: 140, sm: 130, md: 140 },
         }}
       >
         <Box
@@ -102,54 +101,51 @@ const CustomCard = ({ cardItem, idx }: Props) => {
                 {cardItem.desc}
               </Typography>
             )}
-
-            {/* Games wont have any price */}
-            {cardItem.price && (
+            {/* Genres(Only for games) */}
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "flex-end",
+                gap: .3,
+                mt: 2,
+                overflowY : "hidden"
+              }}
+            >
+              <Typography
+                sx={{
+                  fontWeight: 700,
+                  fontSize: {
+                    xs: "0.7rem",
+                    sm: ".8rem",
+                    md: ".9rem",
+                  },
+                  lineHeight: 1.1,
+                }}
+              >
+               : ژانر
+              </Typography>
               <Box
                 sx={{
                   display: "flex",
-                  justifyContent: idx % 2 === 1 ? "start" : "end",
+                  gap: "5px",
+                  flexWrap: "wrap",
+                  marginTop: "8px",
+                  overflowY: "hidden",
+                  justifyContent: `${
+                    idx % 2 === 1 ? "flex-end" : "flex-start"
+                  }`,
+                  "& *": {
+                    fontSize: "12px",
+                  },
                 }}
               >
-                <Typography
-                  sx={{
-                    fontSize: {
-                      xs: "0.9rem",
-                      sm: "0.8rem",
-                      md: "0.875rem",
-                    },
-                    lineHeight: "18px",
-                    opacity: 0.85,
-                    color: "text.secondary",
-                    mt: {
-                      xs: 1,
-                      sm: 1.2,
-                    },
-                    mx: "3px",
-                  }}
-                >
-                  تومن
-                </Typography>
-                <Typography
-                  sx={{
-                    fontSize: {
-                      xs: "1rem",
-                      sm: "0.8rem",
-                      md: "0.875rem",
-                    },
-                    lineHeight: "18px",
-                    opacity: 0.85,
-                    color: "text.secondary",
-                    mt: {
-                      xs: 1,
-                      sm: 1.2,
-                    },
-                  }}
-                >
-                  {cardItem.price}
-                </Typography>
+                {cardItem.genre.map((eachGenre, index) => (
+                  <Chip key={index} label={eachGenre} variant="outlined" />
+                ))}
               </Box>
-            )}
+            </Box>
           </Box>
         </Box>
 
@@ -196,4 +192,4 @@ const CustomCard = ({ cardItem, idx }: Props) => {
   );
 };
 
-export default CustomCard;
+export default CustomGameCard;
