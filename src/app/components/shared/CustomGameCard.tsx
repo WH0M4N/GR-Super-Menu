@@ -31,7 +31,12 @@ const CustomGameCard = ({ cardItem, idx }: Props) => {
           maxWidth: 500,
 
           // responsive height
-          minHeight: "180px",
+          minHeight: {
+            xs: 140,
+            sm: 110,
+            md: 100,
+          },
+          py: 1.5,
         }}
       >
         <Box
@@ -66,7 +71,15 @@ const CustomGameCard = ({ cardItem, idx }: Props) => {
                 }),
           }}
         >
-          <Box>
+          <Box
+            sx={{
+              width: "100%",
+              py: 1,
+              display: "flex",
+              flexDirection: "column",
+              gap: 1,
+            }}
+          >
             <Typography
               sx={{
                 fontWeight: 700,
@@ -80,7 +93,6 @@ const CustomGameCard = ({ cardItem, idx }: Props) => {
             >
               {cardItem.title}
             </Typography>
-
             {cardItem.desc && (
               <Typography
                 sx={{
@@ -89,13 +101,9 @@ const CustomGameCard = ({ cardItem, idx }: Props) => {
                     sm: "0.8rem",
                     md: "0.875rem",
                   },
-                  lineHeight: "18px",
+                  lineHeight: 1.4,
                   opacity: 0.85,
                   color: "text.secondary",
-                  mt: {
-                    xs: 1,
-                    sm: 1.2,
-                  },
                 }}
               >
                 {cardItem.desc}
@@ -107,85 +115,75 @@ const CustomGameCard = ({ cardItem, idx }: Props) => {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
-                alignItems: "flex-end",
-                gap: 1.5,
-                mt: 2,
+                alignItems: idx % 2 === 1 ? "flex-start" : "flex-end",
                 overflowY: "hidden",
               }}
             >
-              <Typography
+              <Box
                 sx={{
                   display: "flex",
-                  flexDirection: "row",
-                  width: "100%",
-                  justifyContent: "space-between",
-                  fontWeight: 700,
-                  fontSize: {
-                    xs: "0.7rem",
-                    sm: ".8rem",
-                    md: ".9rem",
-                  },
-                  lineHeight: 1.1,
+                  justifyContent: idx % 2 === 1 ? "flex-start" : "flex-end",
+                  alignItems: "center",
+                  gap: 0.5,
+                  mt: 0.5,
                 }}
               >
-                <span>{`${cardItem.playerCount}`}</span>
-                <span>: تعداد نفرات</span>
-              </Typography>
-              <Typography
-                sx={{
-                  fontWeight: 700,
-                  fontSize: {
-                    xs: "0.7rem",
-                    sm: ".8rem",
-                    md: ".9rem",
-                  },
-                  lineHeight: 1.1,
-                }}
-              >
-                : ژانر
-              </Typography>
+                <Typography
+                  sx={{
+                    fontWeight: 700,
+                    fontSize: {
+                      xs: "0.72rem",
+                      sm: "0.8rem",
+                    },
+                    mx: "2px",
+                  }}
+                >
+                  نفره
+                </Typography>
+                <Typography
+                  sx={{
+                    fontWeight: 700,
+                    fontSize: {
+                      xs: "0.72rem",
+                      sm: "0.8rem",
+                    },
+                  }}
+                >
+                  {cardItem.playerCount}
+                </Typography>
+              </Box>
 
               <Box
                 sx={{
                   display: "flex",
-                  width: "100%",
-                  gap: "5px",
                   flexWrap: "wrap",
-                  marginTop: "8px",
-                  alignItems: "flex-start",
+                  gap: 0.5,
+                  mt: 0.5,
+                  justifyContent: idx % 2 === 1 ? "flex-end" : "flex-start",
+                  maxHeight: 52,
                   overflowY: "auto",
-                  scrollbarWidth: "none", // Firefox
-                  msOverflowStyle: "none", // IE/old Edge
+
+                  scrollbarWidth: "none",
+                  msOverflowStyle: "none",
+
                   "&::-webkit-scrollbar": {
-                    display: "none", // Chrome, Safari, Edge
-                  },
-                  height: "49px",
-                  justifyContent: `${
-                    idx % 2 === 1 ? "flex-end" : "flex-start"
-                  }`,
-                  "& *": {
-                    fontSize: "12px",
+                    display: "none",
                   },
                 }}
               >
-                {cardItem.genre.map((eachGenre, index) => (
+                {cardItem.genre.map((genre, index) => (
                   <Chip
-                    size="small"
                     key={index}
-                    label={`${eachGenre}`}
+                    label={genre}
+                    size="small"
                     variant="outlined"
                     sx={{
+                      height: 22,
+
                       "& .MuiChip-label": {
-                        whiteSpace: "nowrap",
-                        overflowX: "auto",
-                        overflowY: "hidden",
-                        textOverflow: "ellipsis",
-                        maxWidth: "80px",
-                        scrollbarWidth: "none", // Firefox
-                        msOverflowStyle: "none", // IE/old Edge
-                        "&::-webkit-scrollbar": {
-                          display: "none", // Chrome, Safari, Edge
-                        },
+                        px: "2px",
+                        fontSize: "0.68rem",
+                        fontWeight: 500,
                       },
                     }}
                   />
