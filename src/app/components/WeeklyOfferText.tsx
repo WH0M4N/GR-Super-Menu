@@ -1,7 +1,7 @@
 import { Food } from "@/data/mockData";
 import { Box, Typography } from "@mui/material";
 import React from "react";
-import CustomCard from "./shared/CustomCard";
+import CustomFoodCard from "./shared/CustomFoodCard";
 
 interface Props {
   mostOrdered: Food;
@@ -30,7 +30,7 @@ const WeeklyOfferText = ({ mostOrdered }: Props) => {
             ⭐ محبوب‌ترین هفته
           </Typography>
 
-          <CustomCard cardItem={mostOrdered} idx={0} />
+          <CustomFoodCard cardItem={mostOrdered} idx={0} />
         </Box>
       )}
     </>

@@ -4,7 +4,7 @@ import BackgroundBox from "../components/shared/BackgroundBox";
 import CategoryHorizMenu from "../components/CategoryHorizMenu";
 import FoodItems from "../components/FoodItems";
 import { Box, Typography } from "@mui/material";
-import CustomCard from "../components/shared/CustomCard";
+import CustomCard from "../components/shared/CustomFoodCard";
 import WeeklyOfferText from "../components/WeeklyOfferText";
 
 const FoodPage = () => {
