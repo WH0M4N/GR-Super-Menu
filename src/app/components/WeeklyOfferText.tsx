@@ -1,4 +1,4 @@
-import { Food, Game } from "@/data/mockData";
+import { Food } from "@/data/mockData";
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import CustomCard from "./shared/CustomCard";

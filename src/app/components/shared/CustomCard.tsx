@@ -1,5 +1,5 @@
 "use client";
-import { Food, Game } from "@/data/mockData";
+import { Food } from "@/data/mockData";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import React, { useState } from "react";

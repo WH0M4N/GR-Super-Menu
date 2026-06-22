@@ -1,6 +1,6 @@
 "use client";
 import { Game } from "@/data/mockData";
-import { Box, Chip, Grid, Typography } from "@mui/material";
+import { Box, Chip, Typography } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
 import ImageDialog from "../ImageDialog";
