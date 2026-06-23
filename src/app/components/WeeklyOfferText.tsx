@@ -1,11 +1,16 @@
-import { Food } from "@/data/mockData";
+import { Food, Game } from "@/data/mockData";
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import CustomFoodCard from "./shared/CustomFoodCard";
+import CustomGameCard from "./shared/CustomGameCard";
 
 interface Props {
-  mostOrdered: Food;
+  mostOrdered: Food | Game;
 }
+
+const isGame = (item: Food | Game): item is Game => {
+  return "players" in item;
+};
 
 const WeeklyOfferText = ({ mostOrdered }: Props) => {
   return (
@@ -16,7 +21,7 @@ const WeeklyOfferText = ({ mostOrdered }: Props) => {
           sx={{
             width: "100%",
             maxWidth: 500,
-            my: 3,
+            my: 5,
           }}
         >
           <Typography
@@ -30,7 +35,11 @@ const WeeklyOfferText = ({ mostOrdered }: Props) => {
             ⭐ محبوب‌ترین هفته
           </Typography>
 
-          <CustomFoodCard cardItem={mostOrdered} idx={0} />
+          {isGame(mostOrdered) ? (
+            <CustomGameCard cardItem={mostOrdered} idx={0} />
+          ) : (
+            <CustomFoodCard cardItem={mostOrdered} idx={0} />
+          )}
         </Box>
       )}
     </>

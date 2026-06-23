@@ -13,6 +13,7 @@ interface Props {
 const CustomGameCard = ({ cardItem, idx }: Props) => {
   const [isOpen, setOpen] = useState(false);
   const isWeeklyOffer = cardItem.isWeeklyOffer ? true : false;
+
   return (
     <Box
       sx={{

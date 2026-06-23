@@ -1,10 +1,10 @@
 "use client";
 import { games } from "@/data/mockData";
 import BackgroundBox from "../components/shared/BackgroundBox";
-import { Box, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import GameItems from "../components/GameItems";
-import WeeklyGameOfferText from "../components/WeeklyGameOfferText";
 import GamePageHeader from "../components/GamePageHeader";
+import WeeklyOfferText from "../components/WeeklyOfferText";
 
 const GamePage = () => {
   const mostPlayedGame = games.find((game) => game.isWeeklyOffer);
@@ -12,7 +12,7 @@ const GamePage = () => {
     <BackgroundBox flip={true}>
       {/* Navbar style button and text for exploring games */}
       <GamePageHeader />
-      {mostPlayedGame && <WeeklyGameOfferText mostOrdered={mostPlayedGame} />}
+      {mostPlayedGame && <WeeklyOfferText mostOrdered={mostPlayedGame} />}
       <Typography
         sx={{
           fontWeight: 800,
