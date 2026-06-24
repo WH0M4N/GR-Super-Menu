@@ -6,13 +6,13 @@ import React, { useState } from "react";
 import ImageDialog from "../ImageDialog";
 
 interface Props {
-  cardItem: Food;
+  food: Food;
   idx: number;
 }
 
-const CustomCard = ({ cardItem, idx }: Props) => {
+const CustomCard = ({ food, idx }: Props) => {
   const [isOpen, setOpen] = useState(false);
-  const isWeeklyOffer = cardItem.isWeeklyOffer ? true : false;
+  const isWeeklyOffer = food.isWeeklyOffer ? true : false;
 
   return (
     <Box
@@ -79,10 +79,10 @@ const CustomCard = ({ cardItem, idx }: Props) => {
                 lineHeight: 1.2,
               }}
             >
-              {cardItem.title}
+              {food.title}
             </Typography>
 
-            {cardItem.desc && (
+            {food.desc && (
               <Typography
                 sx={{
                   fontSize: {
@@ -99,12 +99,12 @@ const CustomCard = ({ cardItem, idx }: Props) => {
                   },
                 }}
               >
-                {cardItem.desc}
+                {food.desc}
               </Typography>
             )}
 
             {/* Games wont have any price */}
-            {cardItem.price && (
+            {food.price && (
               <Box
                 sx={{
                   display: "flex",
@@ -146,7 +146,7 @@ const CustomCard = ({ cardItem, idx }: Props) => {
                     },
                   }}
                 >
-                  {cardItem.price}
+                  {food.price}
                 </Typography>
               </Box>
             )}
@@ -179,17 +179,17 @@ const CustomCard = ({ cardItem, idx }: Props) => {
           }}
         >
           <Image
-            src={cardItem.image}
-            alt={cardItem.title}
+            src={food.image}
+            alt={food.title}
             fill
             style={{ objectFit: "cover" }}
           />
         </Box>
         <ImageDialog
-          image={cardItem.image}
+          image={food.image}
           isOpen={isOpen}
           setOpen={setOpen}
-          title={cardItem.title}
+          title={food.title}
         />
       </Box>
     </Box>

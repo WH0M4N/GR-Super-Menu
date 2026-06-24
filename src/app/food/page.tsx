@@ -5,7 +5,7 @@ import CategoryHorizMenu from "../components/CategoryHorizMenu";
 import FoodItems from "../components/FoodItems";
 import { Box, Typography } from "@mui/material";
 import CustomCard from "../components/shared/CustomFoodCard";
-import WeeklyOfferText from "../components/WeeklyOfferText";
+import WeeklyOfferText from "../components/WeeklyOffer";
 
 const FoodPage = () => {
   const mostOrderedFood = foods.find((food) => food.isWeeklyOffer);

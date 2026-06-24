@@ -9,10 +9,12 @@ interface Props {
 }
 
 const isGame = (item: Food | Game): item is Game => {
-  return "players" in item;
+  return "playerCount" in item;
 };
 
-const WeeklyOfferText = ({ mostOrdered }: Props) => {
+const WeeklyOffer = ({ mostOrdered }: Props) => {
+  console.log("most played: ", mostOrdered);
+
   return (
     <>
       {mostOrdered && (
@@ -36,9 +38,9 @@ const WeeklyOfferText = ({ mostOrdered }: Props) => {
           </Typography>
 
           {isGame(mostOrdered) ? (
-            <CustomGameCard cardItem={mostOrdered} idx={0} />
+            <CustomGameCard game={mostOrdered} idx={0} />
           ) : (
-            <CustomFoodCard cardItem={mostOrdered} idx={0} />
+            <CustomFoodCard food={mostOrdered} idx={0} />
           )}
         </Box>
       )}
@@ -46,4 +48,4 @@ const WeeklyOfferText = ({ mostOrdered }: Props) => {
   );
 };
 
-export default WeeklyOfferText;
+export default WeeklyOffer;

@@ -17,7 +17,7 @@ const GameItems = ({ games }: Props) => {
       }}
     >
       {games.map((game, index) => (
-        <CustomGameCard key={game.id} cardItem={game} idx={index} />
+        <CustomGameCard key={game.id} game={game} idx={index} />
       ))}
     </Box>
   );

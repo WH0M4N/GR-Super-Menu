@@ -6,13 +6,13 @@ import { useState } from "react";
 import ImageDialog from "../ImageDialog";
 
 interface Props {
-  cardItem: Game;
+  game: Game;
   idx: number;
 }
 
-const CustomGameCard = ({ cardItem, idx }: Props) => {
+const CustomGameCard = ({ game, idx }: Props) => {
   const [isOpen, setOpen] = useState(false);
-  const isWeeklyOffer = cardItem.isWeeklyOffer ? true : false;
+  const isWeeklyOffer = game.isWeeklyOffer ? true : false;
 
   return (
     <Box
@@ -92,9 +92,9 @@ const CustomGameCard = ({ cardItem, idx }: Props) => {
                 lineHeight: 1.2,
               }}
             >
-              {cardItem.title}
+              {game.title}
             </Typography>
-            {cardItem.desc && (
+            {game.desc && (
               <Typography
                 sx={{
                   fontSize: {
@@ -107,7 +107,7 @@ const CustomGameCard = ({ cardItem, idx }: Props) => {
                   color: "text.secondary",
                 }}
               >
-                {cardItem.desc}
+                {game.desc}
               </Typography>
             )}
             {/* Genres(Only for games) */}
@@ -150,7 +150,7 @@ const CustomGameCard = ({ cardItem, idx }: Props) => {
                     },
                   }}
                 >
-                  {cardItem.playerCount}
+                  {game?.playerCount}
                 </Typography>
               </Box>
 
@@ -172,7 +172,7 @@ const CustomGameCard = ({ cardItem, idx }: Props) => {
                   },
                 }}
               >
-                {cardItem.genre.map((genre, index) => (
+                {game.genre.map((genre, index) => (
                   <Chip
                     key={index}
                     label={genre}
@@ -220,17 +220,17 @@ const CustomGameCard = ({ cardItem, idx }: Props) => {
           }}
         >
           <Image
-            src={cardItem.image}
-            alt={cardItem.title}
+            src={game.image}
+            alt={game.title}
             fill
             style={{ objectFit: "cover" }}
           />
         </Box>
         <ImageDialog
-          image={cardItem.image}
+          image={game.image}
           isOpen={isOpen}
           setOpen={setOpen}
-          title={cardItem.title}
+          title={game.title}
         />
       </Box>
     </Box>
