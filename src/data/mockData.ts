@@ -13,22 +13,24 @@ export interface Food {
   price: number;
 }
 
-export enum GameGenre {
-  Strategy = "Strategy",
-  Family = "Family",
-  Party = "Party",
-  Economic = "Economic",
-  Cooperative = "Cooperative",
-}
+export const GAME_GENRES = [
+  { id: "fun", label: "🎉 فان" },
+  { id: "thinking", label: "🧠 فکری" },
+  { id: "strategy", label: "♟️ استراتژیک" },
+  { id: "mystery", label: "🔍 معمایی" },
+  { id: "mafia", label: "🕵️ مافیایی" },
+  { id: "heavy", label: "😭 سنگین" },
+];
 
-// const playerCountRegex = /^\d+(?:-\d+)?$/;
+export type GameGenre = (typeof GAME_GENRES)[number]["id"];
+
 export interface Game {
   id: number;
   title: string;
   desc: string;
   image: string | StaticImageData;
   genre: GameGenre[];
-  playerCount: string;
+  playerCount: number[];
   isWeeklyOffer?: boolean;
 }
 
@@ -38,8 +40,8 @@ export const games: Game[] = [
     title: "کاتان",
     desc: "بازی مدیریت منابع و ساخت شهر.",
     image: randomGameImage,
-    genre: [GameGenre.Strategy, GameGenre.Economic],
-    playerCount: "3",
+    genre: ["strategy"],
+    playerCount: [3, 4],
     isWeeklyOffer: true,
   },
   {
@@ -47,63 +49,56 @@ export const games: Game[] = [
     title: "کدنیمز",
     desc: "بازی گروهی حدس کلمات.",
     image: randomGameImage,
-    genre: [GameGenre.Party, GameGenre.Family],
-    playerCount: "2-8",
-    isWeeklyOffer: false,
+    genre: ["fun", "thinking"],
+    playerCount: [2, 3, 4, 5, 6, 7, 8],
   },
   {
     id: 3,
     title: "پندمیک",
     desc: "همکاری برای نجات جهان.",
     image: randomGameImage,
-    genre: [GameGenre.Cooperative, GameGenre.Strategy],
-    playerCount: "2",
-    isWeeklyOffer: false,
+    genre: ["strategy", "heavy"],
+    playerCount: [2, 3, 4],
   },
   {
     id: 4,
     title: "تیکت تو راید",
     desc: "ساخت مسیرهای ریلی و کسب امتیاز.",
     image: randomGameImage,
-    genre: [GameGenre.Family, GameGenre.Strategy],
-    playerCount: "2-5",
-    isWeeklyOffer: false,
+    genre: ["strategy", "fun"],
+    playerCount: [2, 3, 4, 5],
   },
   {
     id: 5,
     title: "اسپلندور",
     desc: "رقابت برای جمع‌آوری ثروت.",
     image: randomGameImage,
-    genre: [GameGenre.Economic, GameGenre.Strategy],
-    playerCount: "2-4",
-    isWeeklyOffer: false,
+    genre: ["strategy", "thinking"],
+    playerCount: [2, 3, 4],
   },
   {
     id: 6,
     title: "شطرنج",
     desc: "نبرد فکری دو نفره.",
     image: randomGameImage,
-    genre: [GameGenre.Strategy],
-    playerCount: "2",
-    isWeeklyOffer: false,
+    genre: ["thinking", "strategy"],
+    playerCount: [2],
   },
   {
     id: 7,
-    title: "مونوپولی",
-    desc: "خرید و فروش املاک.",
+    title: "مافیا",
+    desc: "بازی نقش مخفی و استنتاج.",
     image: randomGameImage,
-    genre: [GameGenre.Family, GameGenre.Economic],
-    playerCount: "2-6",
-    isWeeklyOffer: false,
+    genre: ["mafia", "fun"],
+    playerCount: [6, 7, 8, 9, 10],
   },
   {
     id: 8,
     title: "اونو",
     desc: "بازی کارتی سریع و سرگرم‌کننده.",
     image: randomGameImage,
-    genre: [GameGenre.Party, GameGenre.Family],
-    playerCount: "2-10",
-    isWeeklyOffer: false,
+    genre: ["fun"],
+    playerCount: [2, 3, 4, 5, 6, 7, 8, 9, 10],
   },
 ];
 

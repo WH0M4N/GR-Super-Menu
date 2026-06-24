@@ -4,6 +4,7 @@ import { Box, Chip, Typography } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
 import ImageDialog from "../ImageDialog";
+import { usePathname } from "next/navigation";
 
 interface Props {
   game: Game;
@@ -13,6 +14,9 @@ interface Props {
 const CustomGameCard = ({ game, idx }: Props) => {
   const [isOpen, setOpen] = useState(false);
   const isWeeklyOffer = game.isWeeklyOffer ? true : false;
+
+  const pathName = usePathname();
+  const showMostPlayed = pathName !== "/game-picker";
 
   return (
     <Box
@@ -47,13 +51,16 @@ const CustomGameCard = ({ game, idx }: Props) => {
             height: "100%",
             width: "calc(100% - 40px)",
             borderRadius: 3,
-            bgcolor: isWeeklyOffer
-              ? "rgba(255, 215, 0, 0.2)"
-              : "rgba(255,255,255,0.08)",
-            border: isWeeklyOffer ? "1.5px solid #FFD54F" : "none",
-            boxShadow: isWeeklyOffer
-              ? "0 0 20px rgba(255, 215, 0, 0.5)"
-              : "none",
+            bgcolor:
+              isWeeklyOffer && showMostPlayed
+                ? "rgba(255, 215, 0, 0.2)"
+                : "rgba(255,255,255,0.08)",
+            border:
+              isWeeklyOffer && showMostPlayed ? "1.5px solid #FFD54F" : "none",
+            boxShadow:
+              isWeeklyOffer && showMostPlayed
+                ? "0 0 20px rgba(255, 215, 0, 0.5)"
+                : "none",
             display: "flex",
             alignItems: "center",
 
@@ -150,7 +157,11 @@ const CustomGameCard = ({ game, idx }: Props) => {
                     },
                   }}
                 >
-                  {game?.playerCount}
+                  {game?.playerCount.length === 1
+                    ? game.playerCount[0]
+                    : `${game?.playerCount[0]}-${
+                        game?.playerCount[game?.playerCount.length - 1]
+                      }`}
                 </Typography>
               </Box>
 

@@ -3,8 +3,6 @@ import { foods } from "@/data/mockData";
 import BackgroundBox from "../components/shared/BackgroundBox";
 import CategoryHorizMenu from "../components/CategoryHorizMenu";
 import FoodItems from "../components/FoodItems";
-import { Box, Typography } from "@mui/material";
-import CustomCard from "../components/shared/CustomFoodCard";
 import WeeklyOfferText from "../components/WeeklyOffer";
 
 const FoodPage = () => {

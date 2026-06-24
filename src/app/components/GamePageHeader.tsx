@@ -26,7 +26,7 @@ export default function GamePageHeader() {
       }}
     >
       <Link
-        href="/games/info"
+        href="/game-picker"
         style={{
           display: "flex",
           textDecoration: "none",
