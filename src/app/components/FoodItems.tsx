@@ -2,7 +2,7 @@
 import { Food } from "@/data/mockData";
 import { Box, Typography } from "@mui/material";
 import React from "react";
-import CustomCard from "./shared/CustomFoodCard";
+import CustomFoodCard from "./shared/CustomFoodCard"; 
 
 interface Props {
   categories: string[];
@@ -40,9 +40,9 @@ const FoodItems = ({ categories, foods }: Props) => {
             {foods
               .filter((food) => food.category === category)
               .map((food) => (
-                <CustomCard
+                <CustomFoodCard
                   key={food.id}
-                  cardItem={food}
+                  food={food}
                   idx={foodIndexMap.get(food.id) ?? 0}
                 />
               ))}
