@@ -4,8 +4,17 @@ import HomePageContainer from "./components/HomePageContainer";
 import { Box } from "@mui/material";
 import brickWall from "./images/anastase-maragos-lZzlMYL7Q0Y-unsplash.jpg";
 import Footer from "./components/Footer";
+import { useEffect } from "react";
 
 const HomePage = () => {
+
+  const fetchFromDB = async () => {
+    const users = await fetch("http://localhost:3000/api").then(res => res.json());
+    console.log(users);
+  }
+  useEffect(() => {
+    fetchFromDB();
+  },[])
   return (
     <Box
       sx={{
