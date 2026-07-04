@@ -3,10 +3,11 @@ import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import React, { useState } from "react";
 import ImageDialog from "../ImageDialog";
-import { FoodSeed } from "@/data/food";
+import { Food } from "@prisma/client";
+import NoImage from "../../../../public/images/food/noPic.jpg";
 
 interface Props {
-  food: FoodSeed;
+  food: Food;
   idx: number;
 }
 
@@ -97,6 +98,7 @@ const CustomCard = ({ food, idx }: Props) => {
                     xs: 1,
                     sm: 1.2,
                   },
+                  direction: "rtl",
                 }}
               >
                 {food.desc}
@@ -179,7 +181,7 @@ const CustomCard = ({ food, idx }: Props) => {
           }}
         >
           <Image
-            src={food.image!}
+            src={food.image || NoImage}
             alt={food.title}
             fill
             style={{ objectFit: "cover" }}

@@ -2,11 +2,11 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import CustomFoodCard from "./shared/CustomFoodCard";
-import { FoodSeed } from "@/data/food";
+import { Food } from "@prisma/client";
 
 interface Props {
   categories: string[];
-  foods: FoodSeed[];
+  foods: Food[];
 }
 
 const FoodItems = ({ categories, foods }: Props) => {
