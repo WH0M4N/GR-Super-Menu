@@ -1,12 +1,12 @@
 "use client";
-import { Food } from "@/data/mockData";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
 import React, { useState } from "react";
 import ImageDialog from "../ImageDialog";
+import { FoodSeed } from "@/data/food";
 
 interface Props {
-  food: Food;
+  food: FoodSeed;
   idx: number;
 }
 
@@ -179,14 +179,14 @@ const CustomCard = ({ food, idx }: Props) => {
           }}
         >
           <Image
-            src={food.image}
+            src={food.image!}
             alt={food.title}
             fill
             style={{ objectFit: "cover" }}
           />
         </Box>
         <ImageDialog
-          image={food.image}
+          image={food.image!}
           isOpen={isOpen}
           setOpen={setOpen}
           title={food.title}

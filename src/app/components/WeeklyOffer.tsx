@@ -1,14 +1,15 @@
-import { Food, Game } from "@/data/mockData";
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import CustomFoodCard from "./shared/CustomFoodCard";
 import CustomGameCard from "./shared/CustomGameCard";
+import { FoodSeed } from "@/data/food";
+import { Game } from "@/data/mockData";
 
 interface Props {
-  mostOrdered: Food | Game;
+  mostOrdered: FoodSeed | Game;
 }
 
-const isGame = (item: Food | Game): item is Game => {
+const isGame = (item: FoodSeed | Game): item is Game => {
   return "playerCount" in item;
 };
 

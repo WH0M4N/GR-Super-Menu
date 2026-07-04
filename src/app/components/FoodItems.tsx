@@ -1,16 +1,16 @@
 "use client";
-import { Food } from "@/data/mockData";
 import { Box, Typography } from "@mui/material";
 import React from "react";
-import CustomFoodCard from "./shared/CustomFoodCard"; 
+import CustomFoodCard from "./shared/CustomFoodCard";
+import { FoodSeed } from "@/data/food";
 
 interface Props {
   categories: string[];
-  foods: Food[];
+  foods: FoodSeed[];
 }
 
 const FoodItems = ({ categories, foods }: Props) => {
-  const foodIndexMap = new Map(foods.map((food, index) => [food.id, index]));
+  const foodIndexMap = new Map(foods?.map((food, index) => [food?.id, index]));
 
   return (
     <>
