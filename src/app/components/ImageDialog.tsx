@@ -1,6 +1,5 @@
-import { Dialog, Box, IconButton } from "@mui/material";
+import { Dialog, Box } from "@mui/material";
 import Image, { StaticImageData } from "next/image";
-import { TbX } from "react-icons/tb";
 
 interface Props {
   isOpen: boolean;
@@ -44,54 +43,6 @@ const ImageDialog = ({ isOpen, setOpen, image, title }: Props) => {
           overflow: "hidden !important",
         }}
       >
-        <IconButton
-          onClick={() => setOpen(false)}
-          sx={{
-            position: "absolute",
-
-            "@media (max-width: 270px)": {
-              display: "none",
-            },
-
-            "@media (min-width: 270px) and (max-width: 320px)": {
-              top: 55,
-              right: 20,
-            },
-
-            "@media (min-width: 320px) and (max-width: 340px)": {
-              top: 45,
-              right: 20,
-            },
-
-            "@media (min-width: 340px) and (max-width: 360px)": {
-              top: 35,
-              right: 20,
-            },
-
-            "@media (min-width: 360px) and (max-width: 380px)": {
-              top: 35,
-              right: 20,
-            },
-
-            "@media (min-width: 380px) and (max-width: 420px)": {
-              top: 25,
-              right: 20,
-            },
-
-            "@media (min-width: 420px) and (max-width: 480px)": {
-              top: 15,
-              right: 30,
-            },
-
-            "@media (min-width: 480px)": {
-              display: "none",
-            },
-
-            zIndex: 100,
-          }}
-        >
-          <TbX color="white" />
-        </IconButton>
         <Image
           src={image}
           alt={title}
