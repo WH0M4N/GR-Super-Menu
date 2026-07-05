@@ -1,16 +1,27 @@
 "use client";
 import { Box, Typography } from "@mui/material";
-import React from "react";
+import React, { useMemo } from "react";
 import CustomFoodCard from "./shared/CustomFoodCard";
 import { Food } from "@prisma/client";
 
 interface Props {
   categories: string[];
   foods: Food[];
+  onImageClick: (food: Food) => void;
 }
 
-const FoodItems = ({ categories, foods }: Props) => {
+const FoodItems = ({ categories, foods, onImageClick }: Props) => {
   const foodIndexMap = new Map(foods?.map((food, index) => [food?.id, index]));
+
+  const foodsByCategory = useMemo(() => {
+    return foods.reduce(
+      (acc, food) => {
+        (acc[food.category] ??= []).push(food);
+        return acc;
+      },
+      {} as Record<string, Food[]>,
+    );
+  }, [foods]);
 
   return (
     <>
@@ -42,15 +53,14 @@ const FoodItems = ({ categories, foods }: Props) => {
               {categoryWithoutEmoji}
             </Typography>
 
-            {foods
-              .filter((food) => food.category === category)
-              .map((food) => (
-                <CustomFoodCard
-                  key={food.id}
-                  food={food}
-                  idx={foodIndexMap.get(food.id) ?? 0}
-                />
-              ))}
+            {(foodsByCategory[category] ?? []).map((food) => (
+              <CustomFoodCard
+                key={food.id}
+                food={food}
+                idx={foodIndexMap.get(food.id) ?? 0}
+                onImageClick={onImageClick}
+              />
+            ))}
           </Box>
         );
       })}

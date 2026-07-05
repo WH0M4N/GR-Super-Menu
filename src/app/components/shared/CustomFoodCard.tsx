@@ -1,19 +1,19 @@
 "use client";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import React, { useState } from "react";
-import ImageDialog from "../ImageDialog";
+import React from "react";
 import { Food } from "@prisma/client";
 import NoImage from "../../../../public/images/food/noPic.jpg";
 
 interface Props {
   food: Food;
   idx: number;
+  onImageClick: (food: Food) => void;
 }
 
-const CustomCard = ({ food, idx }: Props) => {
-  const [isOpen, setOpen] = useState(false);
+const CustomCard = ({ food, idx, onImageClick }: Props) => {
   const isWeeklyOffer = food.isWeeklyOffer ? true : false;
+  const isLeft = idx % 2 === 1;
 
   return (
     <Box
@@ -53,7 +53,7 @@ const CustomCard = ({ food, idx }: Props) => {
             display: "flex",
             alignItems: "center",
 
-            ...(idx % 2 === 1
+            ...(isLeft
               ? {
                   left: 40,
                   pl: { xs: 7, sm: 8, md: 10 },
@@ -110,7 +110,7 @@ const CustomCard = ({ food, idx }: Props) => {
               <Box
                 sx={{
                   display: "flex",
-                  justifyContent: idx % 2 === 1 ? "start" : "end",
+                  justifyContent: isLeft ? "start" : "end",
                 }}
               >
                 <Typography
@@ -156,14 +156,14 @@ const CustomCard = ({ food, idx }: Props) => {
         </Box>
 
         <Box
-          onClick={() => setOpen(true)}
+          onClick={() => onImageClick(food)}
           sx={{
             position: "absolute",
             top: "50%",
             transform: "translateY(-50%)",
             cursor: "pointer",
 
-            ...(idx % 2 === 1 ? { left: 0 } : { right: 0 }),
+            ...(isLeft ? { left: 0 } : { right: 0 }),
 
             // responsive image size
             width: { xs: 80, sm: 95, md: 110 },
@@ -184,18 +184,13 @@ const CustomCard = ({ food, idx }: Props) => {
             src={food.image || NoImage}
             alt={food.title}
             fill
+            priority={isWeeklyOffer}
             style={{ objectFit: "cover" }}
           />
         </Box>
-        <ImageDialog
-          image={food.image!}
-          isOpen={isOpen}
-          setOpen={setOpen}
-          title={food.title}
-        />
       </Box>
     </Box>
   );
 };
 
-export default CustomCard;
+export default React.memo(CustomCard);
