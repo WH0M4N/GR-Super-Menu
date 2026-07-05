@@ -41,7 +41,12 @@ const FoodPageCore = ({ foods }: { foods: Food[] }) => {
         scrollToCategory={scrollToCategory}
       />
 
-      {mostOrderedFood && <WeeklyOffer mostOrdered={mostOrderedFood} />}
+      {mostOrderedFood && (
+        <WeeklyOffer
+          mostOrdered={mostOrderedFood}
+          onImageClick={setSelectedFood}
+        />
+      )}
 
       <FoodItems
         foods={foods}

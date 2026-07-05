@@ -1,19 +1,20 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
-import CustomFoodCard from "./shared/CustomFoodCard";
 import CustomGameCard from "./shared/CustomGameCard";
 import { Game } from "@/data/mockData";
 import { Food } from "@prisma/client";
+import CustomFoodCard from "./shared/CustomFoodCard";
 
 interface Props {
   mostOrdered: Food | Game;
+  onImageClick: (food: Food) => void;
 }
 
 const isGame = (item: Food | Game): item is Game => {
   return "playerCount" in item;
 };
 
-const WeeklyOffer = ({ mostOrdered }: Props) => {
+const WeeklyOffer = ({ mostOrdered, onImageClick }: Props) => {
   console.log("most played: ", mostOrdered);
 
   return (
@@ -24,7 +25,8 @@ const WeeklyOffer = ({ mostOrdered }: Props) => {
           sx={{
             width: "100%",
             maxWidth: 500,
-            my: 5,
+            mt: 5,
+            mb: 1,
           }}
         >
           <Typography
@@ -41,7 +43,11 @@ const WeeklyOffer = ({ mostOrdered }: Props) => {
           {isGame(mostOrdered) ? (
             <CustomGameCard game={mostOrdered} idx={0} />
           ) : (
-            <CustomFoodCard food={mostOrdered} idx={0} />
+            <CustomFoodCard
+              onImageClick={onImageClick}
+              food={mostOrdered}
+              idx={0}
+            />
           )}
         </Box>
       )}

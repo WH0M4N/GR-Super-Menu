@@ -518,7 +518,7 @@ export const foods: FoodSeed[] = [
     desc: "کیک براونی، بستنی، نوتلا، موز و توت فرنگی",
     image: "/images/food/cakeIceCream.jpg",
     category: "کیک و دسر🍰",
-    isWeeklyOffer: false,
+    isWeeklyOffer: true,
     baseTaste: "",
     price: 445,
   },
