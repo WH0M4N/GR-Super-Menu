@@ -15,6 +15,11 @@ const FoodItems = ({ categories, foods }: Props) => {
   return (
     <>
       {categories.map((category) => {
+        const categoryWithoutEmoji = category.replace(
+          /\p{Extended_Pictographic}\uFE0F?$/u,
+          "",
+        );
+
         return (
           <Box
             key={category}
@@ -34,7 +39,7 @@ const FoodItems = ({ categories, foods }: Props) => {
                 textAlign: "center",
               }}
             >
-              {category}
+              {categoryWithoutEmoji}
             </Typography>
 
             {foods
