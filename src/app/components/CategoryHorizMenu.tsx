@@ -11,8 +11,9 @@ const CategoryHorizMenu = ({ categories, scrollToCategory }: Props) => {
     <Box
       sx={{
         position: "fixed",
-        top: 2,
+        top: 5,
         width: "calc(100% - 24px)",
+        height: "60px",
         maxWidth: 500,
         zIndex: 100,
 
@@ -20,7 +21,7 @@ const CategoryHorizMenu = ({ categories, scrollToCategory }: Props) => {
         backdropFilter: "blur(14px)",
         WebkitBackdropFilter: "blur(14px)",
 
-        border: "1px solid rgba(255,255,255,0.08)",
+        border: "1px solid #d36a1e",
         boxShadow: "0 8px 24px rgba(0,0,0,0.35)",
         borderRadius: "16px",
 
@@ -50,7 +51,7 @@ const CategoryHorizMenu = ({ categories, scrollToCategory }: Props) => {
             borderRadius: 20,
 
             bgcolor: "rgba(255,255,255,0.08)",
-            border: "1px solid rgba(255,255,255,0.1)",
+            border: "1px solid #b55a18",
             backdropFilter: "blur(8px)",
 
             cursor: "pointer",
@@ -59,6 +60,9 @@ const CategoryHorizMenu = ({ categories, scrollToCategory }: Props) => {
             color: "text.primary",
 
             transition: "all 0.2s",
+
+            display: "flex",
+            alignItems: "center",
 
             "&:hover": {
               bgcolor: "rgba(255,255,255,0.15)",

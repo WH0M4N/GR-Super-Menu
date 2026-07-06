@@ -15,6 +15,26 @@ const CustomCard = ({ food, idx, onImageClick }: Props) => {
   const isWeeklyOffer = food.isWeeklyOffer ? true : false;
   const isLeft = idx % 2 === 1;
 
+  const glowingBorder = {
+    ...(isWeeklyOffer && {
+      animation: "glow 3s ease-in-out infinite",
+      "@keyframes glow": {
+        "0%": {
+          borderColor: "#806a25",
+          boxShadow: "0 0 0 rgba(255, 213, 79, 0)",
+        },
+        "50%": {
+          borderColor: "#FFD54F",
+          boxShadow: "0 0 12px rgba(255, 213, 79, 0.7)",
+        },
+        "100%": {
+          borderColor: "#806a25",
+          boxShadow: "0 0 0 rgba(255, 213, 79, 0)",
+        },
+      },
+    }),
+  };
+
   return (
     <Box
       sx={{
@@ -46,7 +66,10 @@ const CustomCard = ({ food, idx, onImageClick }: Props) => {
             bgcolor: isWeeklyOffer
               ? "rgba(255, 215, 0, 0.2)"
               : "rgba(255,255,255,0.08)",
+
             border: isWeeklyOffer ? "1.5px solid #FFD54F" : "none",
+            ...glowingBorder,
+
             boxShadow: isWeeklyOffer
               ? "0 0 20px rgba(255, 215, 0, 0.5)"
               : "none",
@@ -175,6 +198,9 @@ const CustomCard = ({ food, idx, onImageClick }: Props) => {
               xs: isWeeklyOffer ? "3px solid #FFD54F" : "3px solid white",
               md: isWeeklyOffer ? "4px solid #FFD54F" : "4px solid white",
             },
+
+            ...glowingBorder,
+
             bgcolor: isWeeklyOffer ? "#FFD54F" : "white",
             zIndex: 2,
             flexShrink: 0,
