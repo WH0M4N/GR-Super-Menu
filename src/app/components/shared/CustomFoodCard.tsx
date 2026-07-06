@@ -179,7 +179,10 @@ const CustomCard = ({ food, idx, onImageClick }: Props) => {
         </Box>
 
         <Box
-          onClick={() => onImageClick(food)}
+          onClick={() => {
+            if (food.image) onImageClick(food);
+            return;
+          }}
           sx={{
             position: "absolute",
             top: "50%",
