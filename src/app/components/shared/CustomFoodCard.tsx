@@ -213,6 +213,9 @@ const CustomCard = ({ food, idx, onImageClick }: Props) => {
             src={food.image || NoImage}
             alt={food.title}
             fill
+            sizes="(max-width: 600px) 74px,
+         (max-width: 900px) 89px,
+         102px"
             priority={isWeeklyOffer}
             style={{ objectFit: "cover" }}
           />

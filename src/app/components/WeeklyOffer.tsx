@@ -1,5 +1,5 @@
+"use client";
 import { Box, Typography } from "@mui/material";
-import React from "react";
 import CustomGameCard from "./shared/CustomGameCard";
 import { Game } from "@/data/mockData";
 import { Food } from "@prisma/client";
@@ -15,8 +15,6 @@ const isGame = (item: Food | Game): item is Game => {
 };
 
 const WeeklyOffer = ({ mostOrdered, onImageClick }: Props) => {
-  console.log("most played: ", mostOrdered);
-
   return (
     <>
       {mostOrdered && (
