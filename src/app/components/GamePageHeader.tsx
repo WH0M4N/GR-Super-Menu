@@ -21,9 +21,11 @@ export default function GamePageHeader() {
         py: 1,
 
         bgcolor: "background.default",
-        borderBottom: "1px solid rgba(255,213,79,.3)",
-        borderBottomLeftRadius: 3,
-        borderBottomRightRadius: 3,
+        borderRight: "2px solid rgba(255,213,79,.3)",
+        borderBottom: "2px solid rgba(255,213,79,.3)",
+        borderLeft: "2px solid rgba(255,213,79,.3)",
+        borderBottomLeftRadius: 5,
+        borderBottomRightRadius: 5,
       }}
     >
       <Link
