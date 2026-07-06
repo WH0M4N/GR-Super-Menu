@@ -45,7 +45,7 @@ const WeeklyOffer = ({ mostOrdered, onImageClick }: Props) => {
 
           {isGame(mostOrdered) ? (
             <CustomGameCard
-              onImageClick={onImageClick}
+              onImageClick={onImageClick as (game: GameUI) => void}
               game={mostOrdered}
               idx={0}
             />

@@ -233,7 +233,7 @@ const CustomGameCard = ({ game, idx, onImageClick }: Props) => {
           }}
         >
           <Image
-            src={game?.image ?? noPic}
+            src={game?.image || noPic}
             alt={game?.title}
             fill
             sizes="(max-width: 600px) 74px,

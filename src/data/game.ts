@@ -22,7 +22,7 @@ export const games: GameSeed[] = [
   {
     title: "شیر مرغ",
     desc: "به زور محصولاتت رو به ملت قالب کن!",
-    image: "",
+    image: "/images/game/shireMorgh.jpg",
     genre: ["🎉فان"],
     playerCount: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     isWeeklyOffer: false,
@@ -30,7 +30,7 @@ export const games: GameSeed[] = [
   {
     title: "شیر سماور",
     desc: "از عروس و دوماد خانواده با هر روشی که میتونی دفاع کن و امتیاز بگیر",
-    image: "",
+    image: "/images/game/shireSamavar.webp",
     genre: ["🎉فان"],
     playerCount: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     isWeeklyOffer: false,
@@ -38,7 +38,7 @@ export const games: GameSeed[] = [
   {
     title: "یوگی",
     desc: "یک بازی بامزه که مجبورت میکنه حرکات عجیب بکنی!.",
-    image: "",
+    image: "/images/game/yoogi.jpg",
     genre: ["🎉فان"],
     playerCount: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     isWeeklyOffer: false,
@@ -46,7 +46,7 @@ export const games: GameSeed[] = [
   {
     title: "اونو",
     desc: "بازی کارتی کلاسیک با قوانین ساده و رقابتی.",
-    image: "",
+    image: "/images/game/uno.png",
     genre: ["🎉فان"],
     playerCount: [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     isWeeklyOffer: false,
@@ -54,7 +54,7 @@ export const games: GameSeed[] = [
   {
     title: "میم‌چی",
     desc: "بازی دورهمی برای ساختن ترکیبای خنده‌دار از میم‌ها.",
-    image: "",
+    image: "/images/game/mimChi.jpg",
     genre: ["🎉فان"],
     playerCount: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     isWeeklyOffer: false,
@@ -62,7 +62,7 @@ export const games: GameSeed[] = [
   {
     title: "کارت‌های ضد بشریت",
     desc: "یک بازی دورهمی با جوابای غیرمنتظره و طنز سیاه.",
-    image: "",
+    image: "/images/game/kartHayeZedeBashariat.webp",
     genre: ["🎉فان"],
     playerCount: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     isWeeklyOffer: false,
@@ -70,7 +70,7 @@ export const games: GameSeed[] = [
   {
     title: "گایست",
     desc: "جسم درست رو تشخیص بده و سریع بقاپش!",
-    image: "",
+    image: "/images/game/ghiest.jpg",
     genre: ["🎉فان", "🧠فکری"],
     playerCount: [2, 3, 4, 5],
     isWeeklyOffer: false,
@@ -78,7 +78,7 @@ export const games: GameSeed[] = [
   {
     title: "توکی",
     desc: "سریعتر الگو رو بساز و امتیاز بگیر",
-    image: "",
+    image: "/images/game/tuki.jpeg",
     genre: ["🎉فان"],
     playerCount: [2, 3],
     isWeeklyOffer: false,
@@ -86,7 +86,7 @@ export const games: GameSeed[] = [
   {
     title: "زیرخاکی",
     desc: "یک بازی ایرانی درباره کشف اشیا و رقابت برای جمع‌آوریشون.",
-    image: "",
+    image: "/images/game/zirKhaki.jpg",
     genre: ["🎉فان"],
     playerCount: [2, 3, 4],
     isWeeklyOffer: false,
@@ -94,7 +94,7 @@ export const games: GameSeed[] = [
   {
     title: "اسم کارتیل",
     desc: "اسم فامیل کارتی!",
-    image: "",
+    image: "/images/game/esmKartil.jpg",
     genre: ["🎉فان", "🧠فکری"],
     playerCount: [2, 3, 4, 5, 6],
     isWeeklyOffer: false,
@@ -102,7 +102,7 @@ export const games: GameSeed[] = [
   {
     title: "گربه‌های انفجاری",
     desc: "یک بازی کارتی پر از ریسک، شانس و خرابکاری.",
-    image: "",
+    image: "/images/game/gorbeHayeEnfejari.webp",
     genre: ["🎉فان"],
     playerCount: [2, 3, 4, 5, 6, 7, 8],
     isWeeklyOffer: false,
@@ -110,7 +110,7 @@ export const games: GameSeed[] = [
   {
     title: "پنتاگو",
     desc: "یک بازی انتزاعی شبیه به دوز، ولی به مراتب پیشرفته تر!",
-    image: "",
+    image: "/images/game/pentago.jpg",
     genre: ["🧠فکری", "♟️استراتژیک"],
     playerCount: [2],
     isWeeklyOffer: false,
@@ -118,7 +118,7 @@ export const games: GameSeed[] = [
   {
     title: "کوریدور",
     desc: "با مانع ها همدیگه رو اذیت کنید و راه همو ببندید",
-    image: "",
+    image: "/images/game/coridor.png",
     genre: ["🧠فکری", "♟️استراتژیک"],
     playerCount: [2, 3, 4],
     isWeeklyOffer: false,
@@ -126,7 +126,7 @@ export const games: GameSeed[] = [
   {
     title: "مظنونین همیشگی",
     desc: "قاتل و شریک جرم رو با تیم کاراگاهیت پیدا کن و مجازاتشون کن!",
-    image: "",
+    image: "/images/game/maznoonineHamishegi.jpg",
     genre: ["🔍معمایی", "🧠فکری", "🎉فان"],
     playerCount: [3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15, 16],
     isWeeklyOffer: false,
@@ -134,7 +134,7 @@ export const games: GameSeed[] = [
   {
     title: "کدنیمز تصویری",
     desc: "یک بازی تیمی که باید به زبون خودتون توش حرف بزنید!",
-    image: "",
+    image: "/images/game/codeNames.webp",
     genre: ["🧠فکری", "🎉فان"],
     playerCount: [2, 4, 5, 6, 7, 8],
     isWeeklyOffer: false,
@@ -150,7 +150,7 @@ export const games: GameSeed[] = [
   {
     title: "میکرو ماکرو",
     desc: "یک بازی کارآگاهی برای کشف رازها در یک شهر شلوغ.",
-    image: "",
+    image: "/images/game/microMacro.jpg",
     genre: ["🔍معمایی", "🧠فکری"],
     playerCount: [1, 2, 3, 4, 5],
     isWeeklyOffer: false,
@@ -158,7 +158,7 @@ export const games: GameSeed[] = [
   {
     title: "کاپوچین",
     desc: "یک بازی سرعتی و خانوادگی با تصمیم‌های سریع.",
-    image: "",
+    image: "/images/game/capuchin.jpg",
     genre: ["🎉فان"],
     playerCount: [2, 3, 4, 5, 6],
     isWeeklyOffer: false,
@@ -166,7 +166,7 @@ export const games: GameSeed[] = [
   {
     title: "پنیک لب",
     desc: "یک بازی سرعتی برای پیدا کردن آمیب فراری.",
-    image: "",
+    image: "/images/game/panicLab.jpg",
     genre: ["🎉فان", "🧠فکری"],
     playerCount: [2, 3, 4, 5, 6],
     isWeeklyOffer: false,
@@ -174,7 +174,7 @@ export const games: GameSeed[] = [
   {
     title: "استوژیت",
     desc: "با تخیلت کارتاتو پنهان کن و کارت بقیه رو حدس بزن",
-    image: "",
+    image: "/images/game/stogite.jpg",
     genre: ["🎉فان", "🧠فکری"],
     playerCount: [3, 4, 5, 6, 7, 8],
     isWeeklyOffer: false,
@@ -190,7 +190,7 @@ export const games: GameSeed[] = [
   {
     title: "نیمبل",
     desc: "سریع الگو رو پیدا کن و کارتاتو بازی کن!",
-    image: "",
+    image: "/images/game/nimble.jpg",
     genre: ["🎉فان", "🧠فکری"],
     playerCount: [2, 3, 4],
     isWeeklyOffer: false,
@@ -198,7 +198,7 @@ export const games: GameSeed[] = [
   {
     title: "کشتی تعادل",
     desc: "تعادل کشتی رو بهم بزنی باختی!",
-    image: "",
+    image: "/images/game/keshti.jpg",
     genre: ["🎉فان"],
     playerCount: [2, 3, 4],
     isWeeklyOffer: false,
@@ -206,7 +206,7 @@ export const games: GameSeed[] = [
   {
     title: "اسکال کینگ",
     desc: "حکم بلدی؟ شلم بلدی؟ این ترکیبشونه!",
-    image: "",
+    image: "/images/game/skullKing.jpg",
     genre: ["🎉فان", "♟️استراتژیک"],
     playerCount: [2, 3, 4, 5, 6, 7, 8],
     isWeeklyOffer: false,
@@ -214,7 +214,7 @@ export const games: GameSeed[] = [
   {
     title: "اسپلندور",
     desc: "یک بازی مدیریت منابع و جمع‌آوری جواهرات.",
-    image: "",
+    image: "/images/game/spelendor.jpg",
     genre: ["♟️استراتژیک", "🧠فکری"],
     playerCount: [2, 3, 4],
     isWeeklyOffer: false,
@@ -222,7 +222,7 @@ export const games: GameSeed[] = [
   {
     title: "آزول",
     desc: "یک بازی انتزاعی برای ساخت الگوهای زیبا با کاشی‌ها.",
-    image: "",
+    image: "/images/game/azul.jpg",
     genre: ["🧠فکری", "♟️استراتژیک"],
     playerCount: [2, 3, 4],
     isWeeklyOffer: false,
@@ -230,7 +230,7 @@ export const games: GameSeed[] = [
   {
     title: "ساگرادا",
     desc: "یک بازی فکری برای ساخت پنجره‌های رنگارنگ با تاس‌ها.",
-    image: "",
+    image: "/images/game/sagrada.jpg",
     genre: ["🧠فکری", "♟️استراتژیک"],
     playerCount: [2, 3, 4, 5, 6],
     isWeeklyOffer: false,
@@ -238,7 +238,7 @@ export const games: GameSeed[] = [
   {
     title: "کودتا",
     desc: "بلف بزن، بقیه رو حذف کن و برنده شو!",
-    image: "",
+    image: "/images/game/koodeta.jpg",
     genre: ["♟️استراتژیک", "🎉فان", "🕵️مافیایی"],
     playerCount: [2, 3, 4, 5, 6, 7, 8],
     isWeeklyOffer: false,
@@ -246,7 +246,7 @@ export const games: GameSeed[] = [
   {
     title: "هیتلر مخفی",
     desc: "یک بازی هویت مخفی، فریب و استنتاج اجتماعی.",
-    image: "",
+    image: "/images/game/secretHitler.jpg",
     genre: ["🕵️مافیایی", "🧠فکری"],
     playerCount: [5, 6, 7, 8, 9, 10],
     isWeeklyOffer: false,
@@ -254,7 +254,7 @@ export const games: GameSeed[] = [
   {
     title: "ریسک",
     desc: "حمله و کشورگشایی کن",
-    image: "",
+    image: "/images/game/risk.jpg",
     genre: ["♟️استراتژیک", "🏋️سنگین"],
     playerCount: [2, 3, 4, 5],
     isWeeklyOffer: false,
@@ -262,7 +262,7 @@ export const games: GameSeed[] = [
   {
     title: "آف تافل",
     desc: "شرطبندی کن و سریعتر از جهنم فرار کن",
-    image: "",
+    image: "/images/game/aufTuffle.jpg",
     genre: ["🎉فان"],
     playerCount: [2, 3, 4, 5, 6],
     isWeeklyOffer: false,
@@ -278,7 +278,7 @@ export const games: GameSeed[] = [
   {
     title: "شب‌پره متقلب",
     desc: "تقلب کن و برنده شو!",
-    image: "",
+    image: "/images/game/shabpare.jpg",
     genre: ["🎉فان", "🧠فکری"],
     playerCount: [3, 4, 5, 6, 7],
     isWeeklyOffer: false,
@@ -286,7 +286,7 @@ export const games: GameSeed[] = [
   {
     title: "سوسکی",
     desc: "یک بازی کارتی سریع و پر از بلوف و خنده.",
-    image: "",
+    image: "/images/game/sooski.jpg",
     genre: ["🎉فان"],
     playerCount: [2, 3, 4, 5, 6],
     isWeeklyOffer: false,
@@ -294,7 +294,7 @@ export const games: GameSeed[] = [
   {
     title: "رادلندز",
     desc: "یک دوئل کارتی دونفره در دنیایی آخرالزمانی.",
-    image: "",
+    image: "/images/game/radlands.jpg",
     genre: ["♟️استراتژیک", "🏋️سنگین", "🧠فکری"],
     playerCount: [2],
     isWeeklyOffer: false,
@@ -302,7 +302,7 @@ export const games: GameSeed[] = [
   {
     title: "عصر جنگ",
     desc: "یک بازی تاس‌ محور درباره تصرف قلعه‌ها و ریسک‌پذیری.",
-    image: "",
+    image: "/images/game/ageOfWar.jpg",
     genre: ["🎉فان", "♟️استراتژیک"],
     playerCount: [2, 3, 4, 5, 6],
     isWeeklyOffer: false,
@@ -310,7 +310,7 @@ export const games: GameSeed[] = [
   {
     title: "نوآر",
     desc: "خودت رو از دست قاتل نجات بده!",
-    image: "",
+    image: "/images/game/noir.jpg",
     genre: ["🔍معمایی", "🧠فکری"],
     playerCount: [2],
     isWeeklyOffer: false,
@@ -318,7 +318,7 @@ export const games: GameSeed[] = [
   {
     title: "وارچست",
     desc: "یک بازی استراتژیک دونفره با مدیریت نیروها و کنترل مناطق.",
-    image: "",
+    image: "/images/game/warChest.png",
     genre: ["♟️استراتژیک", "🏋️سنگین"],
     playerCount: [2],
     isWeeklyOffer: false,
@@ -326,7 +326,7 @@ export const games: GameSeed[] = [
   {
     title: "آنمچد",
     desc: "قهرمانان افسانه‌ای را در نبردهای تاکتیکی روبه‌روی هم قرار دهید.",
-    image: "",
+    image: "/images/game/unmatched.jpg",
     genre: ["♟️استراتژیک", "🏋️سنگین"],
     playerCount: [2, 3, 4],
     isWeeklyOffer: false,
@@ -342,7 +342,7 @@ export const games: GameSeed[] = [
   {
     title: "تیکت تو راید",
     desc: "با ساخت مسیرهای ریلی، طولانی‌ترین شبکه را ایجاد کنید.",
-    image: "",
+    image: "/images/game/ticketToRide.jpg",
     genre: ["♟️استراتژیک"],
     playerCount: [2, 3, 4, 5],
     isWeeklyOffer: false,
@@ -350,7 +350,7 @@ export const games: GameSeed[] = [
   {
     title: "روت",
     desc: "یک بازی جنگی نامتقارن با جناح‌هایی کاملاً متفاوت.",
-    image: "",
+    image: "/images/game/root.jpg",
     genre: ["♟️استراتژیک", "🏋️سنگین"],
     playerCount: [2, 3, 4],
     isWeeklyOffer: false,
@@ -358,7 +358,7 @@ export const games: GameSeed[] = [
   {
     title: "دیگ اوت",
     desc: "یک بازی رقابتی برای حفاری، جمع‌آوری گنج و پیشی گرفتن از رقبا.",
-    image: "",
+    image: "/images/game/digOut.jpg",
     genre: ["🎉فان", "♟️استراتژیک", "🏋️سنگین"],
     playerCount: [2, 3, 4],
     isWeeklyOffer: false,
@@ -366,7 +366,7 @@ export const games: GameSeed[] = [
   {
     title: "سوروایو",
     desc: "جزیره در حال غرق شدن را ترک کنید و بیشترین افراد را نجات دهید.",
-    image: "",
+    image: "/images/game/survive.jpg",
     genre: ["🎉فان", "♟️استراتژیک", "🧠فکری"],
     playerCount: [2, 3, 4],
     isWeeklyOffer: false,

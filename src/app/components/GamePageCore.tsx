@@ -37,6 +37,7 @@ const GamePageCore = ({ games }: { games: GameUI[] }) => {
         sx={{
           fontWeight: 800,
           fontSize: "1.2rem",
+          mt: 5,
           mb: 1,
           textAlign: "center",
         }}
