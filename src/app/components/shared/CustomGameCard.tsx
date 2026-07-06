@@ -116,7 +116,6 @@ const CustomGameCard = ({ game, idx, onImageClick }: Props) => {
                 {game?.desc}
               </Typography>
             )}
-            {/* Genres(Only for games) */}
             <Box
               sx={{
                 display: "flex",
@@ -135,33 +134,35 @@ const CustomGameCard = ({ game, idx, onImageClick }: Props) => {
                   mt: 0.5,
                 }}
               >
-                <Typography
-                  sx={{
-                    fontWeight: 700,
-                    fontSize: {
-                      xs: "0.72rem",
-                      sm: "0.8rem",
-                    },
-                    mx: "2px",
-                  }}
-                >
-                  نفره
-                </Typography>
-                <Typography
-                  sx={{
-                    fontWeight: 700,
-                    fontSize: {
-                      xs: "0.72rem",
-                      sm: "0.8rem",
-                    },
-                  }}
-                >
-                  {game?.playerCount.length === 1
-                    ? game?.playerCount[0]
-                    : `${game?.playerCount[0]}-${
-                        game?.playerCount[game?.playerCount.length - 1]
-                      }`}
-                </Typography>
+                <Box>
+                  <Typography
+                    sx={{
+                      fontWeight: 700,
+                      fontSize: {
+                        xs: "0.72rem",
+                        sm: "0.8rem",
+                      },
+                      mx: "2px",
+                    }}
+                  >
+                    نفره
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontWeight: 700,
+                      fontSize: {
+                        xs: "0.72rem",
+                        sm: "0.8rem",
+                      },
+                    }}
+                  >
+                    {game?.playerCount.length === 1
+                      ? game?.playerCount[0]
+                      : `${game?.playerCount[0]}-${
+                          game?.playerCount[game?.playerCount.length - 1]
+                        }`}
+                  </Typography>
+                </Box>
 
                 <Box
                   sx={{
@@ -192,7 +193,7 @@ const CustomGameCard = ({ game, idx, onImageClick }: Props) => {
                       sx={{
                         height: 22,
                         mb: 0.5,
-                        p: 1,
+                        p: 0.5,
 
                         "& .MuiChip-label": {
                           px: "2px",
