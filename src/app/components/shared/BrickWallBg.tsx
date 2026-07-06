@@ -1,6 +1,6 @@
 "use client";
 import { Box } from "@mui/material";
-import brickWal from "../images/anastase-maragos-lZzlMYL7Q0Y-unsplash.jpg";
+import brickWal from "../../images/anastase-maragos-lZzlMYL7Q0Y-unsplash.jpg";
 import { ReactNode } from "react";
 
 const BrickWallBg = ({ children }: { children: ReactNode }) => {

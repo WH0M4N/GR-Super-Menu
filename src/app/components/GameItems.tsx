@@ -1,7 +1,13 @@
-import { Game } from "@/data/mockData";
 import CustomGameCard from "./shared/CustomGameCard";
+import { GameUI } from "./GamePicker";
 
-const GameItems = ({ games }: { games: Game[] }) => {
+const GameItems = ({
+  games,
+  onImageClick,
+}: {
+  games: GameUI[];
+  onImageClick: (game: GameUI) => void;
+}) => {
   return (
     <div
       style={{
@@ -11,7 +17,12 @@ const GameItems = ({ games }: { games: Game[] }) => {
       }}
     >
       {games.map((game, index) => (
-        <CustomGameCard key={game.id} game={game} idx={index} />
+        <CustomGameCard
+          key={game.id}
+          game={game}
+          idx={index}
+          onImageClick={onImageClick}
+        />
       ))}
     </div>
   );

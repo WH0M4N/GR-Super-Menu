@@ -1,10 +1,10 @@
 import { Dialog, Box } from "@mui/material";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 
 interface Props {
   isOpen: boolean;
   setOpen: (value: React.SetStateAction<boolean>) => void;
-  image: string | StaticImageData;
+  image: string | null;
   title: string;
 }
 
@@ -44,7 +44,7 @@ const ImageDialog = ({ isOpen, setOpen, image, title }: Props) => {
         }}
       >
         <Image
-          src={image}
+          src={image!}
           alt={title}
           fill
           style={{ objectFit: "contain", overflow: "hidden" }}

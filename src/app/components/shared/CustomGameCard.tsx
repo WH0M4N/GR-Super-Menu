@@ -1,18 +1,17 @@
 "use client";
-import { Game } from "@/data/mockData";
 import { Box, Chip, Typography } from "@mui/material";
 import Image from "next/image";
-import { useState } from "react";
-import ImageDialog from "../ImageDialog";
 import { usePathname } from "next/navigation";
+import { GameUI } from "../GamePicker";
+import noPic from "../../../../public/images/food/noPic.jpg";
 
 interface Props {
-  game: Game;
+  game: GameUI;
   idx: number;
+  onImageClick: (game: GameUI) => void;
 }
 
-const CustomGameCard = ({ game, idx }: Props) => {
-  const [isOpen, setOpen] = useState(false);
+const CustomGameCard = ({ game, idx, onImageClick }: Props) => {
   const isWeeklyOffer = game.isWeeklyOffer ? true : false;
 
   const pathName = usePathname();
@@ -99,9 +98,9 @@ const CustomGameCard = ({ game, idx }: Props) => {
                 lineHeight: 1.2,
               }}
             >
-              {game.title}
+              {game?.title}
             </Typography>
-            {game.desc && (
+            {game?.desc && (
               <Typography
                 sx={{
                   fontSize: {
@@ -114,7 +113,7 @@ const CustomGameCard = ({ game, idx }: Props) => {
                   color: "text.secondary",
                 }}
               >
-                {game.desc}
+                {game?.desc}
               </Typography>
             )}
             {/* Genres(Only for games) */}
@@ -158,7 +157,7 @@ const CustomGameCard = ({ game, idx }: Props) => {
                   }}
                 >
                   {game?.playerCount.length === 1
-                    ? game.playerCount[0]
+                    ? game?.playerCount[0]
                     : `${game?.playerCount[0]}-${
                         game?.playerCount[game?.playerCount.length - 1]
                       }`}
@@ -183,7 +182,7 @@ const CustomGameCard = ({ game, idx }: Props) => {
                   },
                 }}
               >
-                {game.genre.map((genre, index) => (
+                {game?.genre?.map((genre, index) => (
                   <Chip
                     key={index}
                     label={genre}
@@ -206,7 +205,10 @@ const CustomGameCard = ({ game, idx }: Props) => {
         </Box>
 
         <Box
-          onClick={() => setOpen(true)}
+          onClick={() => {
+            if (game?.image) onImageClick(game);
+            return;
+          }}
           sx={{
             position: "absolute",
             top: "50%",
@@ -231,18 +233,16 @@ const CustomGameCard = ({ game, idx }: Props) => {
           }}
         >
           <Image
-            src={game.image}
-            alt={game.title}
+            src={game?.image ?? noPic}
+            alt={game?.title}
             fill
+            sizes="(max-width: 600px) 74px,
+            (max-width: 900px) 89px,
+            102px"
+            priority={isWeeklyOffer}
             style={{ objectFit: "cover" }}
           />
         </Box>
-        <ImageDialog
-          image={game.image}
-          isOpen={isOpen}
-          setOpen={setOpen}
-          title={game.title}
-        />
       </Box>
     </Box>
   );

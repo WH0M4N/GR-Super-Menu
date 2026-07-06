@@ -1,7 +1,7 @@
 import Navbar from "./components/Navbar";
 import HomePageContainer from "./components/HomePageContainer";
 import Footer from "./components/Footer";
-import BrickWallBg from "./components/BrickWallBg";
+import BrickWallBg from "./components/shared/BrickWallBg";
 
 const HomePage = () => {
   return (

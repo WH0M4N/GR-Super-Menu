@@ -1,16 +1,21 @@
 "use client";
 import { Box, Typography } from "@mui/material";
 import CustomGameCard from "./shared/CustomGameCard";
-import { Game } from "@/data/mockData";
 import { Food } from "@prisma/client";
 import CustomFoodCard from "./shared/CustomFoodCard";
+import { GameUI } from "./GamePicker";
 
-interface Props {
-  mostOrdered: Food | Game;
-  onImageClick: (food: Food) => void;
-}
+type Props =
+  | {
+      mostOrdered: Food;
+      onImageClick: (food: Food) => void;
+    }
+  | {
+      mostOrdered: GameUI;
+      onImageClick: (game: GameUI) => void;
+    };
 
-const isGame = (item: Food | Game): item is Game => {
+const isGame = (item: Food | GameUI): item is GameUI => {
   return "playerCount" in item;
 };
 
@@ -39,12 +44,16 @@ const WeeklyOffer = ({ mostOrdered, onImageClick }: Props) => {
           </Typography>
 
           {isGame(mostOrdered) ? (
-            <CustomGameCard game={mostOrdered} idx={0} />
+            <CustomGameCard
+              onImageClick={onImageClick}
+              game={mostOrdered}
+              idx={0}
+            />
           ) : (
             <CustomFoodCard
-              onImageClick={onImageClick}
               food={mostOrdered}
               idx={0}
+              onImageClick={onImageClick as (food: Food) => void}
             />
           )}
         </Box>

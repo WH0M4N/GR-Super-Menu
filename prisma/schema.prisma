@@ -20,7 +20,7 @@ model Food {
 model Game {
   id            Int      @id @default(autoincrement())
   title         String
-  desc          String
+  desc          String?
   image         String?
   genre         String
   playerCount   String
