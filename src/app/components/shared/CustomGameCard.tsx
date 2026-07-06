@@ -162,43 +162,46 @@ const CustomGameCard = ({ game, idx, onImageClick }: Props) => {
                         game?.playerCount[game?.playerCount.length - 1]
                       }`}
                 </Typography>
-              </Box>
 
-              <Box
-                sx={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: 0.5,
-                  mt: 0.5,
-                  justifyContent: idx % 2 === 1 ? "flex-end" : "flex-start",
-                  maxHeight: 52,
-                  overflowY: "auto",
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: idx % 2 === 1 ? "flex-end" : "flex-start",
+                    alignItems: "center !important",
+                    flexWrap: "wrap",
+                    gap: 0.5,
+                    mt: 0.5,
+                    ml: 2,
+                    maxHeight: 52,
+                    overflowY: "auto",
 
-                  scrollbarWidth: "none",
-                  msOverflowStyle: "none",
+                    scrollbarWidth: "none",
+                    msOverflowStyle: "none",
 
-                  "&::-webkit-scrollbar": {
-                    display: "none",
-                  },
-                }}
-              >
-                {game?.genre?.map((genre, index) => (
-                  <Chip
-                    key={index}
-                    label={genre}
-                    size="small"
-                    variant="outlined"
-                    sx={{
-                      height: 22,
+                    "&::-webkit-scrollbar": {
+                      display: "none",
+                    },
+                  }}
+                >
+                  {game?.genre?.map((genre, index) => (
+                    <Chip
+                      key={index}
+                      label={genre}
+                      size="small"
+                      variant="outlined"
+                      sx={{
+                        height: 22,
+                        mb: 0.5,
 
-                      "& .MuiChip-label": {
-                        px: "2px",
-                        fontSize: "0.68rem",
-                        fontWeight: 500,
-                      },
-                    }}
-                  />
-                ))}
+                        "& .MuiChip-label": {
+                          px: "2px",
+                          fontSize: "0.68rem",
+                          fontWeight: 500,
+                        },
+                      }}
+                    />
+                  ))}
+                </Box>
               </Box>
             </Box>
           </Box>

@@ -21,7 +21,7 @@ export interface GameSeed {
 export const games: GameSeed[] = [
   {
     title: "شیر مرغ",
-    desc: "به زور محصولاتت رو به ملت قالب کن!",
+    desc: "به زور محصولاتت رو به ملت قالب کن",
     image: "/images/game/shireMorgh.jpg",
     genre: ["🎉فان"],
     playerCount: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
@@ -37,7 +37,7 @@ export const games: GameSeed[] = [
   },
   {
     title: "یوگی",
-    desc: "یک بازی بامزه که مجبورت میکنه حرکات عجیب بکنی!.",
+    desc: "یک بازی بامزه که مجبورت میکنه حرکات عجیب بکنی.",
     image: "/images/game/yoogi.jpg",
     genre: ["🎉فان"],
     playerCount: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
@@ -69,7 +69,7 @@ export const games: GameSeed[] = [
   },
   {
     title: "گایست",
-    desc: "جسم درست رو تشخیص بده و سریع بقاپش!",
+    desc: "جسم درست رو تشخیص بده و سریع بقاپش",
     image: "/images/game/ghiest.jpg",
     genre: ["🎉فان", "🧠فکری"],
     playerCount: [2, 3, 4, 5],
@@ -93,7 +93,7 @@ export const games: GameSeed[] = [
   },
   {
     title: "اسم کارتیل",
-    desc: "اسم فامیل کارتی!",
+    desc: "اسم فامیل کارتی",
     image: "/images/game/esmKartil.jpg",
     genre: ["🎉فان", "🧠فکری"],
     playerCount: [2, 3, 4, 5, 6],
@@ -109,7 +109,7 @@ export const games: GameSeed[] = [
   },
   {
     title: "پنتاگو",
-    desc: "یک بازی انتزاعی شبیه به دوز، ولی به مراتب پیشرفته تر!",
+    desc: "یک بازی انتزاعی شبیه به دوز، ولی به مراتب پیشرفته تر",
     image: "/images/game/pentago.jpg",
     genre: ["🧠فکری", "♟️استراتژیک"],
     playerCount: [2],
@@ -125,7 +125,7 @@ export const games: GameSeed[] = [
   },
   {
     title: "مظنونین همیشگی",
-    desc: "قاتل و شریک جرم رو با تیم کاراگاهیت پیدا کن و مجازاتشون کن!",
+    desc: "قاتل و شریک جرم رو با تیم کاراگاهیت پیدا کن و مجازاتشون کن",
     image: "/images/game/maznoonineHamishegi.jpg",
     genre: ["🔍معمایی", "🧠فکری", "🎉فان"],
     playerCount: [3, 4, 5, 6, 9, 10, 11, 12, 13, 14, 15, 16],
@@ -133,7 +133,7 @@ export const games: GameSeed[] = [
   },
   {
     title: "کدنیمز تصویری",
-    desc: "یک بازی تیمی که باید به زبون خودتون توش حرف بزنید!",
+    desc: "یک بازی تیمی که باید به زبون خودتون توش حرف بزنید",
     image: "/images/game/codeNames.webp",
     genre: ["🧠فکری", "🎉فان"],
     playerCount: [2, 4, 5, 6, 7, 8],
@@ -189,7 +189,7 @@ export const games: GameSeed[] = [
   },
   {
     title: "نیمبل",
-    desc: "سریع الگو رو پیدا کن و کارتاتو بازی کن!",
+    desc: "سریع الگو رو پیدا کن و کارتاتو بازی کن",
     image: "/images/game/nimble.jpg",
     genre: ["🎉فان", "🧠فکری"],
     playerCount: [2, 3, 4],
@@ -197,7 +197,7 @@ export const games: GameSeed[] = [
   },
   {
     title: "کشتی تعادل",
-    desc: "تعادل کشتی رو بهم بزنی باختی!",
+    desc: "تعادل کشتی رو بهم بزنی باختی",
     image: "/images/game/keshti.jpg",
     genre: ["🎉فان"],
     playerCount: [2, 3, 4],
@@ -205,7 +205,7 @@ export const games: GameSeed[] = [
   },
   {
     title: "اسکال کینگ",
-    desc: "حکم بلدی؟ شلم بلدی؟ این ترکیبشونه!",
+    desc: "حکم بلدی؟ شلم بلدی؟ این ترکیبشونه",
     image: "/images/game/skullKing.jpg",
     genre: ["🎉فان", "♟️استراتژیک"],
     playerCount: [2, 3, 4, 5, 6, 7, 8],
@@ -237,7 +237,7 @@ export const games: GameSeed[] = [
   },
   {
     title: "کودتا",
-    desc: "بلف بزن، بقیه رو حذف کن و برنده شو!",
+    desc: "بلف بزن، بقیه رو حذف کن و برنده شو",
     image: "/images/game/koodeta.jpg",
     genre: ["♟️استراتژیک", "🎉فان", "🕵️مافیایی"],
     playerCount: [2, 3, 4, 5, 6, 7, 8],
@@ -277,7 +277,7 @@ export const games: GameSeed[] = [
   },
   {
     title: "شب‌پره متقلب",
-    desc: "تقلب کن و برنده شو!",
+    desc: "تقلب کن و برنده شو",
     image: "/images/game/shabpare.jpg",
     genre: ["🎉فان", "🧠فکری"],
     playerCount: [3, 4, 5, 6, 7],
@@ -309,7 +309,7 @@ export const games: GameSeed[] = [
   },
   {
     title: "نوآر",
-    desc: "خودت رو از دست قاتل نجات بده!",
+    desc: "خودت رو از دست قاتل نجات بده",
     image: "/images/game/noir.jpg",
     genre: ["🔍معمایی", "🧠فکری"],
     playerCount: [2],
