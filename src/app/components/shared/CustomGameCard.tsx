@@ -192,6 +192,7 @@ const CustomGameCard = ({ game, idx, onImageClick }: Props) => {
                       sx={{
                         height: 22,
                         mb: 0.5,
+                        p: 1,
 
                         "& .MuiChip-label": {
                           px: "2px",
