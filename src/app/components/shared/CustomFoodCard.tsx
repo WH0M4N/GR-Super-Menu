@@ -1,18 +1,39 @@
 "use client";
-import { Food } from "@/data/mockData";
 import { Box, Typography } from "@mui/material";
 import Image from "next/image";
-import React, { useState } from "react";
-import ImageDialog from "../ImageDialog";
+import React from "react";
+import { Food } from "@prisma/client";
+import NoImage from "../../../../public/images/food/noPic.jpg";
 
 interface Props {
   food: Food;
   idx: number;
+  onImageClick: (food: Food) => void;
 }
 
-const CustomCard = ({ food, idx }: Props) => {
-  const [isOpen, setOpen] = useState(false);
+const CustomCard = ({ food, idx, onImageClick }: Props) => {
   const isWeeklyOffer = food.isWeeklyOffer ? true : false;
+  const isLeft = idx % 2 === 1;
+
+  const glowingBorder = {
+    ...(isWeeklyOffer && {
+      animation: "glow 3s ease-in-out infinite",
+      "@keyframes glow": {
+        "0%": {
+          borderColor: "#806a25",
+          boxShadow: "0 0 0 rgba(255, 213, 79, 0)",
+        },
+        "50%": {
+          borderColor: "#FFD54F",
+          boxShadow: "0 0 12px rgba(255, 213, 79, 0.7)",
+        },
+        "100%": {
+          borderColor: "#806a25",
+          boxShadow: "0 0 0 rgba(255, 213, 79, 0)",
+        },
+      },
+    }),
+  };
 
   return (
     <Box
@@ -45,14 +66,17 @@ const CustomCard = ({ food, idx }: Props) => {
             bgcolor: isWeeklyOffer
               ? "rgba(255, 215, 0, 0.2)"
               : "rgba(255,255,255,0.08)",
+
             border: isWeeklyOffer ? "1.5px solid #FFD54F" : "none",
+            ...glowingBorder,
+
             boxShadow: isWeeklyOffer
               ? "0 0 20px rgba(255, 215, 0, 0.5)"
               : "none",
             display: "flex",
             alignItems: "center",
 
-            ...(idx % 2 === 1
+            ...(isLeft
               ? {
                   left: 40,
                   pl: { xs: 7, sm: 8, md: 10 },
@@ -97,6 +121,7 @@ const CustomCard = ({ food, idx }: Props) => {
                     xs: 1,
                     sm: 1.2,
                   },
+                  direction: "rtl",
                 }}
               >
                 {food.desc}
@@ -108,7 +133,7 @@ const CustomCard = ({ food, idx }: Props) => {
               <Box
                 sx={{
                   display: "flex",
-                  justifyContent: idx % 2 === 1 ? "start" : "end",
+                  justifyContent: isLeft ? "start" : "end",
                 }}
               >
                 <Typography
@@ -154,14 +179,17 @@ const CustomCard = ({ food, idx }: Props) => {
         </Box>
 
         <Box
-          onClick={() => setOpen(true)}
+          onClick={() => {
+            if (food.image) onImageClick(food);
+            return;
+          }}
           sx={{
             position: "absolute",
             top: "50%",
             transform: "translateY(-50%)",
             cursor: "pointer",
 
-            ...(idx % 2 === 1 ? { left: 0 } : { right: 0 }),
+            ...(isLeft ? { left: 0 } : { right: 0 }),
 
             // responsive image size
             width: { xs: 80, sm: 95, md: 110 },
@@ -173,27 +201,28 @@ const CustomCard = ({ food, idx }: Props) => {
               xs: isWeeklyOffer ? "3px solid #FFD54F" : "3px solid white",
               md: isWeeklyOffer ? "4px solid #FFD54F" : "4px solid white",
             },
+
+            ...glowingBorder,
+
             bgcolor: isWeeklyOffer ? "#FFD54F" : "white",
             zIndex: 2,
             flexShrink: 0,
           }}
         >
           <Image
-            src={food.image}
+            src={food.image || NoImage}
             alt={food.title}
             fill
+            sizes="(max-width: 600px) 74px,
+         (max-width: 900px) 89px,
+         102px"
+            priority={isWeeklyOffer}
             style={{ objectFit: "cover" }}
           />
         </Box>
-        <ImageDialog
-          image={food.image}
-          isOpen={isOpen}
-          setOpen={setOpen}
-          title={food.title}
-        />
       </Box>
     </Box>
   );
 };
 
-export default CustomCard;
+export default React.memo(CustomCard);

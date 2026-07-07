@@ -21,7 +21,7 @@ const BackgroundBox = ({
         backgroundImage: `url(${flip ? wavyBgFlip.src : wavyBg.src})`,
         backgroundRepeat: "repeat-y",
         backgroundPosition: "top center",
-        backgroundSize: "cover",
+        backgroundSize: "auto",
         position: "relative",
         px: { xs: 1, sm: 2, md: 5 },
         py: 5,

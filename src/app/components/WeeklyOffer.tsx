@@ -1,20 +1,25 @@
-import { Food, Game } from "@/data/mockData";
+"use client";
 import { Box, Typography } from "@mui/material";
-import React from "react";
-import CustomFoodCard from "./shared/CustomFoodCard";
 import CustomGameCard from "./shared/CustomGameCard";
+import { Food } from "@prisma/client";
+import CustomFoodCard from "./shared/CustomFoodCard";
+import { GameUI } from "./GamePicker";
 
-interface Props {
-  mostOrdered: Food | Game;
-}
+type Props =
+  | {
+      mostOrdered: Food;
+      onImageClick: (food: Food) => void;
+    }
+  | {
+      mostOrdered: GameUI;
+      onImageClick: (game: GameUI) => void;
+    };
 
-const isGame = (item: Food | Game): item is Game => {
+const isGame = (item: Food | GameUI): item is GameUI => {
   return "playerCount" in item;
 };
 
-const WeeklyOffer = ({ mostOrdered }: Props) => {
-  console.log("most played: ", mostOrdered);
-
+const WeeklyOffer = ({ mostOrdered, onImageClick }: Props) => {
   return (
     <>
       {mostOrdered && (
@@ -23,7 +28,8 @@ const WeeklyOffer = ({ mostOrdered }: Props) => {
           sx={{
             width: "100%",
             maxWidth: 500,
-            my: 5,
+            mt: 5,
+            mb: 1,
           }}
         >
           <Typography
@@ -38,9 +44,17 @@ const WeeklyOffer = ({ mostOrdered }: Props) => {
           </Typography>
 
           {isGame(mostOrdered) ? (
-            <CustomGameCard game={mostOrdered} idx={0} />
+            <CustomGameCard
+              onImageClick={onImageClick as (game: GameUI) => void}
+              game={mostOrdered}
+              idx={0}
+            />
           ) : (
-            <CustomFoodCard food={mostOrdered} idx={0} />
+            <CustomFoodCard
+              food={mostOrdered}
+              idx={0}
+              onImageClick={onImageClick as (food: Food) => void}
+            />
           )}
         </Box>
       )}

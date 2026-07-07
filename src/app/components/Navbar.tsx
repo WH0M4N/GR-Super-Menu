@@ -1,12 +1,10 @@
-"use client";
-import { Box, Typography } from "@mui/material";
 import logo from "../images/logo.png";
 import Image from "next/image";
 
 const Navbar = () => {
   return (
-    <Box
-      sx={{
+    <div
+      style={{
         display: "flex",
         alignItems: "center",
         justifyContent: "start",
@@ -15,8 +13,8 @@ const Navbar = () => {
       }}
     >
       {/* Logo */}
-      <Box
-        sx={{
+      <div
+        style={{
           zIndex: 2,
           display: "flex",
           flexDirection: "column",
@@ -32,39 +30,39 @@ const Navbar = () => {
           priority={true}
           style={{ marginTop: "30px" }}
         />
-        <Typography
-          sx={{
+        <p
+          style={{
             fontSize: "22px",
             fontWeight: "600",
             color: "#ffffff",
-            mt: 1,
-            mb: 3,
+            marginTop: 1,
+            marginBottom: 3,
           }}
         >
           گیم ریپابلیک
-        </Typography>
-      </Box>
+        </p>
+      </div>
 
       {/* Open & closing times */}
-      <Box
-        sx={{
+      <div
+        style={{
           width: "100%",
           zIndex: 2,
           textAlign: "center",
           padding: "4px 12px",
           display: "flex",
           flexDirection: "column",
-          mb: 2,
+          marginBottom: 2,
         }}
       >
-        <Typography sx={{ color: "rgba(255,255,255,0.75)", m: 0 }}>
+        <p style={{ color: "rgba(255,255,255,0.75)", margin: 0 }}>
           شنبه تا چهارشنبه ۱۴ تا ۱
-        </Typography>
-        <Typography sx={{ color: "rgba(255,255,255,0.75)", mt: "3px" }}>
+        </p>
+        <p style={{ color: "rgba(255,255,255,0.75)", marginTop: "3px" }}>
           پنجشنبه و جمعه ۱۲ تا ۱
-        </Typography>
-      </Box>
-    </Box>
+        </p>
+      </div>
+    </div>
   );
 };
 

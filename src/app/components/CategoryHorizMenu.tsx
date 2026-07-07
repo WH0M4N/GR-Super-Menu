@@ -10,12 +10,20 @@ const CategoryHorizMenu = ({ categories, scrollToCategory }: Props) => {
   return (
     <Box
       sx={{
-        position: "sticky",
-        top: 0,
-        width: "100%",
+        position: "fixed",
+        top: 5,
+        width: "calc(100% - 24px)",
+        height: "60px",
         maxWidth: 500,
         zIndex: 100,
-        bgcolor: "rgba(255,255,255,0.07)",
+
+        bgcolor: "rgba(13,13,13,0.75)",
+        backdropFilter: "blur(14px)",
+        WebkitBackdropFilter: "blur(14px)",
+
+        border: "1px solid #d36a1e",
+        boxShadow: "0 8px 24px rgba(0,0,0,0.35)",
+        borderRadius: "16px",
 
         display: "flex",
         gap: 1,
@@ -24,7 +32,6 @@ const CategoryHorizMenu = ({ categories, scrollToCategory }: Props) => {
         whiteSpace: "nowrap",
         py: 1,
         px: 1,
-        borderRadius: "6px",
 
         "&::-webkit-scrollbar": {
           display: "none",
@@ -42,9 +49,25 @@ const CategoryHorizMenu = ({ categories, scrollToCategory }: Props) => {
             px: 2,
             py: 1,
             borderRadius: 20,
-            bgcolor: "background.paper",
+
+            bgcolor: "rgba(255,255,255,0.08)",
+            border: "1px solid #b55a18",
+            backdropFilter: "blur(8px)",
+
             cursor: "pointer",
             whiteSpace: "nowrap",
+            fontWeight: 600,
+            color: "text.primary",
+
+            transition: "all 0.2s",
+
+            display: "flex",
+            alignItems: "center",
+
+            "&:hover": {
+              bgcolor: "rgba(255,255,255,0.15)",
+              transform: "translateY(-1px)",
+            },
           }}
         >
           {category}

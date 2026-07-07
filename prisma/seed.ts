@@ -1,8 +1,9 @@
-import { Prisma } from "@/generated/prisma/client";
-import { PrismaClient } from "@/generated/prisma/client";
+import "dotenv/config";
+import { PrismaClient } from "@prisma/client";
 import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 
-import "dotenv/config";
+import { foods } from "@/data/food";
+import { games } from "@/data/game";
 
 const adapter = new PrismaBetterSqlite3({
   url: process.env.DATABASE_URL!,
@@ -12,43 +13,25 @@ const prisma = new PrismaClient({
   adapter,
 });
 
-const userData: Prisma.UserCreateInput[] = [
-  {
-    name: "Alice",
-    email: "alice@prisma.io",
-    posts: {
-      create: [
-        {
-          title: "Join the Prisma Discord",
-          content: "https://pris.ly/discord",
-          published: true,
-        },
-        {
-          title: "Prisma on YouTube",
-          content: "https://pris.ly/youtube",
-        },
-      ],
-    },
-  },
-  {
-    name: "Bob",
-    email: "bob@prisma.io",
-    posts: {
-      create: [
-        {
-          title: "Follow Prisma on Twitter",
-          content: "https://www.twitter.com/prisma",
-          published: true,
-        },
-      ],
-    },
-  },
-];
+async function main() {
+  await prisma.food.deleteMany();
+  await prisma.game.deleteMany();
 
-export async function main() {
-  for (const u of userData) {
-    await prisma.user.create({ data: u });
-  }
+  await prisma.food.createMany({
+    data: foods,
+  });
+
+  await prisma.game.createMany({
+    data: games.map((game) => ({
+      ...game,
+      genre: JSON.stringify(game.genre),
+      playerCount: JSON.stringify(game.playerCount),
+    })),
+  });
 }
 
-main();
+main()
+  .catch(console.error)
+  .finally(async () => {
+    await prisma.$disconnect();
+  });

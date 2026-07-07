@@ -1,22 +1,47 @@
 "use client";
-import { Game } from "@/data/mockData";
 import { Box, Chip, Typography } from "@mui/material";
 import Image from "next/image";
-import { useState } from "react";
-import ImageDialog from "../ImageDialog";
 import { usePathname } from "next/navigation";
+import { GameUI } from "../GamePicker";
+import noPic from "../../../../public/images/food/noPic.jpg";
 
 interface Props {
-  game: Game;
+  game: GameUI;
   idx: number;
+  onImageClick: (game: GameUI) => void;
+  showGenres?: boolean;
 }
 
-const CustomGameCard = ({ game, idx }: Props) => {
-  const [isOpen, setOpen] = useState(false);
+const CustomGameCard = ({
+  game,
+  idx,
+  onImageClick,
+  showGenres = true,
+}: Props) => {
   const isWeeklyOffer = game.isWeeklyOffer ? true : false;
 
   const pathName = usePathname();
   const showMostPlayed = pathName !== "/game-picker";
+
+  const glowingBorder = {
+    ...(isWeeklyOffer && {
+      animation: "glow 3s ease-in-out infinite",
+      "@keyframes glow": {
+        "0%": {
+          borderColor: "#806a25",
+          boxShadow: "0 0 0 rgba(255, 213, 79, 0)",
+        },
+        "50%": {
+          borderColor: "#FFD54F",
+          boxShadow: "0 0 12px rgba(255, 213, 79, 0.7)",
+        },
+        "100%": {
+          borderColor: "#806a25",
+          boxShadow: "0 0 0 rgba(255, 213, 79, 0)",
+        },
+      },
+    }),
+  };
 
   return (
     <Box
@@ -57,6 +82,7 @@ const CustomGameCard = ({ game, idx }: Props) => {
                 : "rgba(255,255,255,0.08)",
             border:
               isWeeklyOffer && showMostPlayed ? "1.5px solid #FFD54F" : "none",
+            ...glowingBorder,
             boxShadow:
               isWeeklyOffer && showMostPlayed
                 ? "0 0 20px rgba(255, 215, 0, 0.5)"
@@ -99,9 +125,9 @@ const CustomGameCard = ({ game, idx }: Props) => {
                 lineHeight: 1.2,
               }}
             >
-              {game.title}
+              {game?.title}
             </Typography>
-            {game.desc && (
+            {game?.desc && (
               <Typography
                 sx={{
                   fontSize: {
@@ -114,10 +140,9 @@ const CustomGameCard = ({ game, idx }: Props) => {
                   color: "text.secondary",
                 }}
               >
-                {game.desc}
+                {game?.desc}
               </Typography>
             )}
-            {/* Genres(Only for games) */}
             <Box
               sx={{
                 display: "flex",
@@ -136,77 +161,93 @@ const CustomGameCard = ({ game, idx }: Props) => {
                   mt: 0.5,
                 }}
               >
-                <Typography
+                <Box
                   sx={{
-                    fontWeight: 700,
-                    fontSize: {
-                      xs: "0.72rem",
-                      sm: "0.8rem",
-                    },
-                    mx: "2px",
+                    display: "flex",
+                    justifyContent: "center",
+                    flexWrap: "wrap",
                   }}
                 >
-                  نفره
-                </Typography>
-                <Typography
-                  sx={{
-                    fontWeight: 700,
-                    fontSize: {
-                      xs: "0.72rem",
-                      sm: "0.8rem",
-                    },
-                  }}
-                >
-                  {game?.playerCount.length === 1
-                    ? game.playerCount[0]
-                    : `${game?.playerCount[0]}-${
-                        game?.playerCount[game?.playerCount.length - 1]
-                      }`}
-                </Typography>
-              </Box>
-
-              <Box
-                sx={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: 0.5,
-                  mt: 0.5,
-                  justifyContent: idx % 2 === 1 ? "flex-end" : "flex-start",
-                  maxHeight: 52,
-                  overflowY: "auto",
-
-                  scrollbarWidth: "none",
-                  msOverflowStyle: "none",
-
-                  "&::-webkit-scrollbar": {
-                    display: "none",
-                  },
-                }}
-              >
-                {game.genre.map((genre, index) => (
-                  <Chip
-                    key={index}
-                    label={genre}
-                    size="small"
-                    variant="outlined"
+                  <Typography
                     sx={{
-                      height: 22,
-
-                      "& .MuiChip-label": {
-                        px: "2px",
-                        fontSize: "0.68rem",
-                        fontWeight: 500,
+                      fontWeight: 700,
+                      fontSize: {
+                        xs: "0.72rem",
+                        sm: "0.8rem",
+                      },
+                      mx: "2px",
+                    }}
+                  >
+                    نفره
+                  </Typography>
+                  <Typography
+                    sx={{
+                      fontWeight: 700,
+                      fontSize: {
+                        xs: "0.72rem",
+                        sm: "0.8rem",
                       },
                     }}
-                  />
-                ))}
+                  >
+                    {game?.playerCount.length === 1
+                      ? game?.playerCount[0]
+                      : `${game?.playerCount[0]}-${
+                          game?.playerCount[game?.playerCount.length - 1]
+                        }`}
+                  </Typography>
+                </Box>
+
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: idx % 2 === 1 ? "flex-end" : "flex-start",
+                    alignItems: "center !important",
+                    flexWrap: "wrap",
+                    gap: 0.5,
+                    mt: 0.5,
+                    ml: 1,
+                    maxHeight: 52,
+                    overflowY: "auto",
+
+                    scrollbarWidth: "none",
+                    msOverflowStyle: "none",
+
+                    "&::-webkit-scrollbar": {
+                      display: "none",
+                    },
+                  }}
+                >
+                  {showGenres &&
+                    game?.genre?.map((genre, index) => (
+                      <Chip
+                        key={index}
+                        label={genre}
+                        size="small"
+                        variant="outlined"
+                        sx={{
+                          height: 22,
+                          mb: 0.5,
+                          p: 0.5,
+
+                          "& .MuiChip-label": {
+                            px: "2px",
+                            fontSize: "0.68rem",
+                            fontWeight: 500,
+                          },
+                        }}
+                      />
+                    ))}
+                </Box>
               </Box>
             </Box>
           </Box>
         </Box>
 
         <Box
-          onClick={() => setOpen(true)}
+          onClick={() => {
+            if (game?.image) onImageClick(game);
+            return;
+          }}
           sx={{
             position: "absolute",
             top: "50%",
@@ -225,24 +266,23 @@ const CustomGameCard = ({ game, idx }: Props) => {
               xs: isWeeklyOffer ? "3px solid #FFD54F" : "3px solid white",
               md: isWeeklyOffer ? "4px solid #FFD54F" : "4px solid white",
             },
+            ...glowingBorder,
             bgcolor: isWeeklyOffer ? "#FFD54F" : "white",
             zIndex: 2,
             flexShrink: 0,
           }}
         >
           <Image
-            src={game.image}
-            alt={game.title}
+            src={game?.image || noPic}
+            alt={game?.title}
             fill
+            sizes="(max-width: 600px) 74px,
+            (max-width: 900px) 89px,
+            102px"
+            priority={isWeeklyOffer}
             style={{ objectFit: "cover" }}
           />
         </Box>
-        <ImageDialog
-          image={game.image}
-          isOpen={isOpen}
-          setOpen={setOpen}
-          title={game.title}
-        />
       </Box>
     </Box>
   );

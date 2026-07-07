@@ -1,32 +1,14 @@
-"use client";
-import { games } from "@/data/mockData";
-import BackgroundBox from "../components/shared/BackgroundBox";
-import { Typography } from "@mui/material";
-import GameItems from "../components/GameItems";
-import GamePageHeader from "../components/GamePageHeader";
-import WeeklyOffer from "../components/WeeklyOffer";
+import prisma from "../../../lib/prisma";
+import GamePageCore from "../components/GamePageCore";
 
-const GamePage = () => {
-  const mostPlayedGame = games.find((game) => game.isWeeklyOffer);
+const GamePage = async () => {
+  const games = (await prisma.game.findMany()).map((game) => ({
+    ...game,
+    genre: JSON.parse(game.genre),
+    playerCount: JSON.parse(game.playerCount),
+  }));
 
-  return (
-    <BackgroundBox flip={true}>
-      {/* Navbar style button and text for exploring games */}
-      <GamePageHeader />
-      {mostPlayedGame && <WeeklyOffer mostOrdered={mostPlayedGame} />}
-      <Typography
-        sx={{
-          fontWeight: 800,
-          fontSize: "1.2rem",
-          mb: 1,
-          textAlign: "center",
-        }}
-      >
-        🕹️ بازی ها
-      </Typography>
-      <GameItems games={games} />
-    </BackgroundBox>
-  );
+  return <GamePageCore games={games} />;
 };
 
 export default GamePage;

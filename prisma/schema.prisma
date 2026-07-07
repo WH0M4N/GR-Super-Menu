@@ -1,8 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -10,17 +5,24 @@ generator client {
 datasource db {
   provider = "sqlite"
 }
-model User { 
-  id    Int     @id @default(autoincrement()) 
-  email String  @unique
-  name  String?
-  posts Post[]
-} 
-model Post { 
-  id        Int     @id @default(autoincrement()) 
-  title     String
-  content   String?
-  published Boolean @default(false) 
-  authorId  Int
-  author    User    @relation(fields: [authorId], references: [id]) 
-} 
+
+model Food {
+  id            Int      @id @default(autoincrement())
+  title         String
+  desc          String?
+  image         String?
+  category      String
+  isWeeklyOffer Boolean  @default(false)
+  baseTaste     String?
+  price         Float
+}
+
+model Game {
+  id            Int      @id @default(autoincrement())
+  title         String
+  desc          String?
+  image         String?
+  genre         String
+  playerCount   String
+  isWeeklyOffer Boolean  @default(false)
+}
