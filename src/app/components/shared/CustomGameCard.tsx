@@ -9,9 +9,15 @@ interface Props {
   game: GameUI;
   idx: number;
   onImageClick: (game: GameUI) => void;
+  showGenres?: boolean;
 }
 
-const CustomGameCard = ({ game, idx, onImageClick }: Props) => {
+const CustomGameCard = ({
+  game,
+  idx,
+  onImageClick,
+  showGenres = true,
+}: Props) => {
   const isWeeklyOffer = game.isWeeklyOffer ? true : false;
 
   const pathName = usePathname();
@@ -134,7 +140,13 @@ const CustomGameCard = ({ game, idx, onImageClick }: Props) => {
                   mt: 0.5,
                 }}
               >
-                <Box>
+                <Box
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    flexWrap: "wrap",
+                  }}
+                >
                   <Typography
                     sx={{
                       fontWeight: 700,
@@ -172,7 +184,7 @@ const CustomGameCard = ({ game, idx, onImageClick }: Props) => {
                     flexWrap: "wrap",
                     gap: 0.5,
                     mt: 0.5,
-                    ml: 2,
+                    ml: 1,
                     maxHeight: 52,
                     overflowY: "auto",
 
@@ -184,25 +196,26 @@ const CustomGameCard = ({ game, idx, onImageClick }: Props) => {
                     },
                   }}
                 >
-                  {game?.genre?.map((genre, index) => (
-                    <Chip
-                      key={index}
-                      label={genre}
-                      size="small"
-                      variant="outlined"
-                      sx={{
-                        height: 22,
-                        mb: 0.5,
-                        p: 0.5,
+                  {showGenres &&
+                    game?.genre?.map((genre, index) => (
+                      <Chip
+                        key={index}
+                        label={genre}
+                        size="small"
+                        variant="outlined"
+                        sx={{
+                          height: 22,
+                          mb: 0.5,
+                          p: 0.5,
 
-                        "& .MuiChip-label": {
-                          px: "2px",
-                          fontSize: "0.68rem",
-                          fontWeight: 500,
-                        },
-                      }}
-                    />
-                  ))}
+                          "& .MuiChip-label": {
+                            px: "2px",
+                            fontSize: "0.68rem",
+                            fontWeight: 500,
+                          },
+                        }}
+                      />
+                    ))}
                 </Box>
               </Box>
             </Box>

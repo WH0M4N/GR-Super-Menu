@@ -4,9 +4,11 @@ import { GameUI } from "./GamePicker";
 const GameItems = ({
   games,
   onImageClick,
+  showGenres = true,
 }: {
   games: GameUI[];
   onImageClick: (game: GameUI) => void;
+  showGenres?: boolean;
 }) => {
   return (
     <div
@@ -22,6 +24,7 @@ const GameItems = ({
           game={game}
           idx={index}
           onImageClick={onImageClick}
+          showGenres={showGenres}
         />
       ))}
     </div>

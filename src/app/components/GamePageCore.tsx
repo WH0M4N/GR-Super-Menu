@@ -27,6 +27,7 @@ const GamePageCore = ({ games }: { games: GameUI[] }) => {
       />
 
       <GamePageHeader />
+
       {mostPlayedGame && (
         <WeeklyOffer
           mostOrdered={mostPlayedGame}
@@ -37,7 +38,7 @@ const GamePageCore = ({ games }: { games: GameUI[] }) => {
         sx={{
           fontWeight: 800,
           fontSize: "1.2rem",
-          mt: 5,
+          mt: 2,
           mb: 1,
           textAlign: "center",
         }}

@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import GameItems from "./GameItems";
 import { GameGenre } from "@/data/game";
 import ImageDialog from "./ImageDialog";
+import BackButton from "./BackButton";
 
 export interface GameUI {
   id: number;
@@ -50,10 +51,6 @@ const GamePicker = ({ genres, players, games }: Props) => {
     });
   }, [selectedPlayer, selectedGenres]);
 
-  const suggestedGames = useMemo(() => {
-    return [...filteredGames].sort(() => Math.random() - 0.5).slice(0, 3);
-  }, [filteredGames]);
-
   const hasFilters = selectedPlayer !== null || selectedGenres.length > 0;
 
   return (
@@ -64,17 +61,29 @@ const GamePicker = ({ genres, players, games }: Props) => {
         setOpen={() => setSelectedGame(null)}
         title={selectedGame?.title ?? ""}
       />
-      <Box sx={{ maxWidth: 500, mx: "auto", py: 3, px: 2 }}>
-        <Typography
+
+      <Box sx={{ maxWidth: 500, mx: "auto", py: 0, px: 2 }}>
+        <Box
           sx={{
-            textAlign: "center",
-            fontWeight: 700,
-            fontSize: "1.4rem",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
             mb: 3,
           }}
         >
-          🎲 چی بازی کنیم؟
-        </Typography>
+          <BackButton />
+
+          <Typography
+            sx={{
+              textAlign: "center",
+              fontWeight: 700,
+              fontSize: "1.4rem",
+              ml: 2,
+            }}
+          >
+            🎲 چی بازی کنیم؟
+          </Typography>
+        </Box>
         <Typography sx={{ mb: 1, textAlign: "end" }}>چند نفر هستید؟</Typography>
         <Box
           sx={{
@@ -154,7 +163,11 @@ const GamePicker = ({ genres, players, games }: Props) => {
             ژانر و تعداد نفراتتونو انتخاب کنید <br /> !تا بهتون پیشنهاد بدیم
           </Typography>
         ) : (
-          <GameItems onImageClick={setSelectedGame} games={suggestedGames} />
+          <GameItems
+            onImageClick={setSelectedGame}
+            games={filteredGames}
+            showGenres={false}
+          />
         )}
       </Box>
     </>
