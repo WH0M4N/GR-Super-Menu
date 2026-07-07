@@ -329,7 +329,7 @@ export const games: GameSeed[] = [
     image: "/images/game/unmatched.jpg",
     genre: ["♟️استراتژیک", "🏋️سنگین"],
     playerCount: [2, 3, 4],
-    isWeeklyOffer: false,
+    isWeeklyOffer: true,
   },
   {
     title: "شتر، گاو، پلنگ",
