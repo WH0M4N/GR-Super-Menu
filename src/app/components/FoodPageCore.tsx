@@ -6,14 +6,11 @@ import BackgroundBox from "./shared/BackgroundBox";
 import WeeklyOffer from "./WeeklyOffer";
 import { Food } from "@prisma/client";
 import ImageDialog from "./ImageDialog";
+import categories from "@/data/categories";
 
 const FoodPageCore = ({ foods }: { foods: Food[] }) => {
   const [selectedFood, setSelectedFood] = useState<Food | null>(null);
 
-  const categories = useMemo(
-    () => [...new Set(foods.map((food) => food.category))],
-    [foods],
-  );
   const mostOrderedFood = useMemo(
     () => foods.find((food) => food.isWeeklyOffer),
     [foods],
