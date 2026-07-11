@@ -20,6 +20,7 @@ const theme = createTheme({
       paper: "rgba(0,0,0,0.65)", // overlays on image
     },
 
+
     text: {
       primary: "#ffffff",
       secondary: "rgba(255,255,255,0.75)",
@@ -81,7 +82,6 @@ const theme = createTheme({
     },
   },
 });
-
 export default theme;
 
 // export const theme = createTheme({

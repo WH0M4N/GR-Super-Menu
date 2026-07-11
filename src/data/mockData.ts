@@ -204,3 +204,7 @@ export const foods = [
     isWeeklyOffer: false,
   },
 ];
+
+export const uniqueFoodCategories = Array.from(
+  new Map(foods.map((food) => [food.category, food])).values()
+);
