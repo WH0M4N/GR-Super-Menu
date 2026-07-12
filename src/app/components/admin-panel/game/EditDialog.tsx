@@ -1,0 +1,373 @@
+import {
+  Box,
+  Button,
+  FormControl,
+  InputLabel,
+  ListItemText,
+  MenuItem,
+  OutlinedInput,
+  Select,
+  SelectChangeEvent,
+  Typography,
+} from "@mui/material";
+import { FaEdit } from "react-icons/fa";
+import TextField from "@mui/material/TextField";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import { FormEvent, useRef, useState } from "react";
+import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
+import CheckBoxIcon from "@mui/icons-material/CheckBox";
+import Image from "next/image";
+import { toEnglishDigits } from "../../../../../utils/helper";
+import { Game } from "@prisma/client";
+import { GAME_GENRES } from "@/data/game";
+import { useRouter } from "next/navigation";
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  slotProps: {
+    paper: {
+      style: {
+        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+        width: 250,
+      },
+    },
+  },
+};
+
+export default function EditDialog({ game }: { game: Game }) {
+  const parsePlayerCounts = (input: string): number[] => {
+    const normalized = toEnglishDigits(input)
+      .replace(/،/g, ",") // Persian comma
+      .replace(/\s+/g, "") // remove spaces
+      .replace(/-/g, ","); // treat - as separator
+
+    const numbers = normalized
+      .split(",")
+      .map(Number)
+      .filter((n) => Number.isInteger(n) && n > 0);
+
+    return [...new Set(numbers)].sort((a, b) => a - b);
+  };
+
+  const router = useRouter();
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [open, setOpen] = useState(false);
+  const [title, setTitle] = useState(game.title);
+  const [desc, setDesc] = useState(game.desc ?? "");
+  const [genre, setGenre] = useState<string[]>(JSON.parse(game.genre));
+  const [playerCount, setPlayerCount] = useState<number[]>(
+    JSON.parse(game.playerCount),
+  );
+  const [playerCountText, setPlayerCountText] = useState(
+    JSON.parse(game.playerCount).join("-"),
+  );
+
+  const [imageSrc, setImageSrc] = useState(game.image ?? "");
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+
+    const res = await fetch(`/api/games/${game.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title,
+        desc,
+        image: imageSrc,
+        genre: JSON.stringify(genre),
+        playerCount: JSON.stringify(playerCount),
+        isWeeklyOffer: game.isWeeklyOffer,
+      }),
+    });
+
+    if (res.ok) {
+      handleClose();
+      router.refresh();
+    }
+  };
+
+  const handleGenreChange = (event: SelectChangeEvent<typeof genre>) => {
+    const value = event.target.value;
+
+    setGenre(typeof value === "string" ? value.split(",") : value);
+  };
+
+  return (
+    <>
+      <Button
+        onClick={handleClickOpen}
+        size="small"
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 0.5,
+          borderColor: "btn.blue",
+          color: "btn.blue",
+          "&:hover": {
+            bgcolor: "btn.lightBlue",
+          },
+        }}
+        variant="outlined"
+      >
+        ویرایش
+        <Box
+          sx={{
+            alignItems: "center",
+            justifyContent: "center",
+            display: {
+              xs: "none",
+              md: "flex",
+            },
+          }}
+          component="span"
+        >
+          <FaEdit />
+        </Box>
+      </Button>
+      <Dialog
+        fullWidth
+        dir="rtl"
+        slotProps={{
+          paper: {
+            sx: {
+              bgcolor: "background.default",
+            },
+          },
+        }}
+        open={open}
+        onClose={handleClose}
+      >
+        <DialogTitle sx={{ color: "text.primary" }}>ویرایش</DialogTitle>
+        <DialogContent>
+          <DialogContentText sx={{ color: "text.gray", my: 1 }}>
+            اطلاعات مورد نظر را ویرایش کنید
+          </DialogContentText>
+          <form onSubmit={(e) => handleSubmit(e)} id="subscription-form">
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 3,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <TextField
+                autoFocus
+                size="small"
+                sx={{
+                  // Default
+                  "& .MuiOutlinedInput-root fieldset": {
+                    borderColor: "text.gray",
+                  },
+                  "& .MuiFormLabel-root": {
+                    color: "text.gray",
+                  },
+
+                  // Hover
+                  "& .MuiOutlinedInput-root:hover fieldset": {
+                    borderColor: "text.gray",
+                  },
+
+                  // Focused
+                  "& .MuiOutlinedInput-root.Mui-focused fieldset": {
+                    borderColor: "text.gray",
+                  },
+
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "text.gray",
+                  },
+                }}
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                margin="dense"
+                id="game-title"
+                name="game-title"
+                label="نام بازی"
+                type="text"
+                fullWidth
+                variant="outlined"
+              />
+              <TextField
+                value={desc}
+                onChange={(e) => setDesc(e.target.value)}
+                autoFocus
+                size="small"
+                sx={{
+                  // Default
+                  "& .MuiOutlinedInput-root fieldset": {
+                    borderColor: "text.gray",
+                  },
+                  "& .MuiFormLabel-root": {
+                    color: "text.gray",
+                  },
+
+                  // Hover
+                  "& .MuiOutlinedInput-root:hover fieldset": {
+                    borderColor: "text.gray",
+                  },
+
+                  // Focused
+                  "& .MuiOutlinedInput-root.Mui-focused fieldset": {
+                    borderColor: "text.gray",
+                  },
+
+                  "& .MuiInputLabel-root.Mui-focused": {
+                    color: "text.gray",
+                  },
+                }}
+                margin="dense"
+                id="food-description"
+                name="food-description"
+                label="توضیحات"
+                type="text"
+                fullWidth
+                multiline
+                maxRows={7}
+                variant="outlined"
+              />
+              <FormControl fullWidth>
+                <InputLabel id="category-label">ژانر</InputLabel>
+                <Select
+                  labelId="category-label"
+                  id="category-select"
+                  value={genre}
+                  input={<OutlinedInput label="Tag" />}
+                  renderValue={(selected) => selected.join(", ")}
+                  MenuProps={MenuProps}
+                  label="‌ژانر"
+                  size="small"
+                  variant="outlined"
+                  onChange={handleGenreChange}
+                  multiple
+                >
+                  {GAME_GENRES?.map((gameGenre, index) => {
+                    const selected = genre.includes(gameGenre);
+
+                    const SelectionIcon = selected
+                      ? CheckBoxIcon
+                      : CheckBoxOutlineBlankIcon;
+
+                    return (
+                      <MenuItem key={index} value={gameGenre}>
+                        <SelectionIcon
+                          fontSize="small"
+                          style={{
+                            marginRight: 8,
+                            padding: 9,
+                            boxSizing: "content-box",
+                          }}
+                        />
+                        <ListItemText primary={gameGenre} />
+                      </MenuItem>
+                    );
+                  })}
+                </Select>
+              </FormControl>
+              <TextField
+                fullWidth
+                label="تعداد بازیکنان"
+                value={playerCountText}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setPlayerCountText(value);
+                  setPlayerCount(parsePlayerCounts(value));
+                }}
+              />
+
+              <Box
+                sx={{
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: 1,
+                }}
+              >
+                <Box
+                  sx={{ width: "150px", height: "150px", position: "relative" }}
+                >
+                  {imageSrc ? (
+                    <Image
+                      style={{
+                        borderRadius: "8px",
+                        objectFit: "cover",
+                      }}
+                      fill
+                      sizes="150px"
+                      src={imageSrc}
+                      alt="food image"
+                    />
+                  ) : (
+                    <Typography
+                      sx={{
+                        color: "text.gray",
+                        width: "100%",
+                        textAlign: "center",
+                        height: "100%",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      تصویری وجود ندارد
+                    </Typography>
+                  )}
+                </Box>
+
+                <input
+                  ref={inputRef}
+                  type="file"
+                  accept="image/jpeg, image/png, image/jpg , image/webp"
+                  hidden
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (!file) return;
+                    const reader = new FileReader();
+
+                    reader.onload = () => {
+                      setImageSrc(reader.result as string);
+                    };
+
+                    reader.readAsDataURL(file);
+                  }}
+                />
+                <Button
+                  onClick={() => inputRef.current?.click()}
+                  type="button"
+                  variant="outlined"
+                  size="small"
+                >
+                  عوض کردن عکس
+                </Button>
+              </Box>
+            </Box>
+          </form>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>لغو</Button>
+          <Button type="submit" form="subscription-form">
+            ذخیره
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </>
+  );
+}

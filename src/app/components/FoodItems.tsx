@@ -11,8 +11,6 @@ interface Props {
 }
 
 const FoodItems = ({ categories, foods, onImageClick }: Props) => {
-  const foodIndexMap = new Map(foods?.map((food, index) => [food?.id, index]));
-
   const foodsByCategory = useMemo(() => {
     return foods.reduce(
       (acc, food) => {
@@ -53,11 +51,11 @@ const FoodItems = ({ categories, foods, onImageClick }: Props) => {
               {categoryWithoutEmoji}
             </Typography>
 
-            {(foodsByCategory[category] ?? []).map((food) => (
+            {(foodsByCategory[category] ?? []).map((food, idx) => (
               <CustomFoodCard
                 key={food.id}
                 food={food}
-                idx={foodIndexMap.get(food.id) ?? 0}
+                idx={idx}
                 onImageClick={onImageClick}
               />
             ))}
