@@ -1,7 +1,9 @@
 import {
   Box,
   Button,
+  Checkbox,
   FormControl,
+  FormControlLabel,
   InputLabel,
   ListItemText,
   MenuItem,
@@ -66,6 +68,7 @@ export default function EditDialog({ game }: { game: Game }) {
   const [playerCountText, setPlayerCountText] = useState(
     JSON.parse(game.playerCount).join("-"),
   );
+  const [isWeeklyOffer, setIsWeeklyOffer] = useState(game.isWeeklyOffer);
 
   const [imageSrc, setImageSrc] = useState(game.image ?? "");
 
@@ -91,7 +94,7 @@ export default function EditDialog({ game }: { game: Game }) {
         image: imageSrc,
         genre: JSON.stringify(genre),
         playerCount: JSON.stringify(playerCount),
-        isWeeklyOffer: game.isWeeklyOffer,
+        isWeeklyOffer,
       }),
     });
 
@@ -359,6 +362,16 @@ export default function EditDialog({ game }: { game: Game }) {
                 </Button>
               </Box>
             </Box>
+
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={isWeeklyOffer}
+                  onChange={(e) => setIsWeeklyOffer(e.target.checked)}
+                />
+              }
+              label="پیشنهاد ویژه هفته"
+            />
           </form>
         </DialogContent>
         <DialogActions>

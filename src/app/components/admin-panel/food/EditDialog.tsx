@@ -1,7 +1,9 @@
 import {
   Box,
   Button,
+  Checkbox,
   FormControl,
+  FormControlLabel,
   InputLabel,
   MenuItem,
   Select,
@@ -30,6 +32,7 @@ export default function EditDialog({ food }: { food: Food }) {
   const [title, setTitle] = useState(food.title);
   const [desc, setDesc] = useState(food.desc ?? "");
   const [price, setPrice] = useState(food.price);
+  const [isWeeklyOffer, setIsWeeklyOffer] = useState(food.isWeeklyOffer);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -58,7 +61,7 @@ export default function EditDialog({ food }: { food: Food }) {
         price,
         image: imageSrc,
         baseTaste: food.baseTaste,
-        isWeeklyOffer: food.isWeeklyOffer,
+        isWeeklyOffer,
       }),
     });
 
@@ -109,6 +112,7 @@ export default function EditDialog({ food }: { food: Food }) {
           <FaEdit />
         </Box>
       </Button>
+
       <Dialog
         fullWidth
         dir="rtl"
@@ -334,6 +338,16 @@ export default function EditDialog({ food }: { food: Food }) {
                 </Button>
               </Box>
             </Box>
+
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={isWeeklyOffer}
+                  onChange={(e) => setIsWeeklyOffer(e.target.checked)}
+                />
+              }
+              label="پیشنهاد ویژه هفته"
+            />
           </form>
         </DialogContent>
         <DialogActions>

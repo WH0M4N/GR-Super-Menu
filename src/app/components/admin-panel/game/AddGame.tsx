@@ -1,7 +1,9 @@
 import {
   Box,
   Button,
+  Checkbox,
   FormControl,
+  FormControlLabel,
   InputLabel,
   ListItemText,
   MenuItem,
@@ -141,6 +143,7 @@ export default function AddGame() {
       >
         اضافه کردن بازی جدید +
       </Button>
+
       <Dialog
         fullWidth
         dir="rtl"
@@ -296,7 +299,7 @@ export default function AddGame() {
                   setPlayerCounts(parsePlayerCounts(value));
                 }}
               />
-              
+
               <Box
                 sx={{
                   width: "100%",
@@ -365,6 +368,16 @@ export default function AddGame() {
                 </Button>
               </Box>
             </Box>
+
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={isWeeklyOffer}
+                  onChange={(e) => setIsWeeklyOffer(e.target.checked)}
+                />
+              }
+              label="پیشنهاد ویژه هفته"
+            />
           </form>
         </DialogContent>
         <DialogActions>

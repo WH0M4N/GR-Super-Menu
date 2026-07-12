@@ -9,6 +9,14 @@ export async function PATCH(
     const body = await req.json();
     const { id } = await params;
 
+    if (body.isWeeklyOffer) {
+      await prisma.food.updateMany({
+        data: {
+          isWeeklyOffer: false,
+        },
+      });
+    }
+
     const food = await prisma.food.update({
       where: {
         id: Number(id),

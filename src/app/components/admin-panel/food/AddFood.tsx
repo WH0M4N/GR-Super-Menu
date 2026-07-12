@@ -1,7 +1,9 @@
 import {
   Box,
   Button,
+  Checkbox,
   FormControl,
+  FormControlLabel,
   InputLabel,
   MenuItem,
   Select,
@@ -107,6 +109,7 @@ export default function AddFood() {
       >
         اضافه کردن غذای جدید +
       </Button>
+
       <Dialog
         fullWidth
         dir="rtl"
@@ -333,6 +336,16 @@ export default function AddFood() {
                 </Button>
               </Box>
             </Box>
+
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={isWeeklyOffer}
+                  onChange={(e) => setIsWeeklyOffer(e.target.checked)}
+                />
+              }
+              label="پیشنهاد ویژه هفته"
+            />
           </form>
         </DialogContent>
         <DialogActions>

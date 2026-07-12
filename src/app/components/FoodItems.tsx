@@ -37,6 +37,7 @@ const FoodItems = ({ categories, foods, onImageClick }: Props) => {
               width: "100%",
               maxWidth: 500,
               scrollMarginTop: "70px",
+              mt: 2,
             }}
           >
             <Typography
