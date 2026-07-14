@@ -9,7 +9,7 @@ export async function PATCH(
   const body = await request.json();
 
   if (body.isWeeklyOffer) {
-    await prisma.food.updateMany({
+    await prisma.game.updateMany({
       data: {
         isWeeklyOffer: false,
       },
