@@ -53,7 +53,8 @@ export default function AddGame() {
       .map(Number)
       .filter((n) => Number.isInteger(n) && n > 0);
 
-    return [...new Set(numbers)].sort((a, b) => a - b);
+    // return [...new Set(numbers)].sort((a, b) => a - b);
+    return Array.from(new Set(numbers)).sort((a, b) => a - b);
   };
 
   const inputRef = useRef<HTMLInputElement>(null);
