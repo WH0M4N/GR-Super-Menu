@@ -10,7 +10,6 @@ import ImageDialog from "./ImageDialog";
 
 const GamePageCore = ({ games }: { games: GameUI[] }) => {
   const [selectedGame, setSelectedGame] = useState<GameUI | null>(null);
-  console.log("selected game: ", selectedGame);
 
   const mostPlayedGame = useMemo(
     () => games.find((game) => game.isWeeklyOffer),
