@@ -1,10 +1,15 @@
 import { NextResponse } from "next/server";
 import prisma from "../../../../../lib/prisma";
+import { verifyAdmin } from "../../../../../lib/auth";
 
 export async function PATCH(
   request: Request,
   { params }: { params: Promise<{ id: string }> },
 ) {
+  if (!(await verifyAdmin())) {
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+  }
+
   const { id } = await params;
   const body = await request.json();
 
@@ -30,6 +35,10 @@ export async function DELETE(
   request: Request,
   { params }: { params: Promise<{ id: string }> },
 ) {
+  if (!(await verifyAdmin())) {
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+  }
+
   const { id } = await params;
 
   await prisma.game.delete({

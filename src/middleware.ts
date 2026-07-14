@@ -2,25 +2,27 @@ import { NextRequest, NextResponse } from "next/server";
 import { verifyToken } from "../lib/auth";
 
 export async function middleware(req: NextRequest) {
-  console.log("🔥 Middleware:", req.nextUrl.pathname);
-
   const token = req.cookies.get("admin-session")?.value;
+  const isLoginPage = req.nextUrl.pathname === "/admin/login";
 
-  // Allow access to the login page
-  if (req.nextUrl.pathname === "/admin/login") {
-    return NextResponse.next();
-  }
-
-  // No cookie -> go to login
   if (!token) {
+    if (isLoginPage) {
+      return NextResponse.next();
+    }
+
     return NextResponse.redirect(new URL("/admin/login", req.url));
   }
 
-  // Invalid cookie -> go to login
   const valid = await verifyToken(token);
 
   if (!valid) {
-    return NextResponse.redirect(new URL("/admin/login", req.url));
+    const response = NextResponse.redirect(new URL("/admin/login", req.url));
+    response.cookies.delete("admin-session");
+    return response;
+  }
+
+  if (isLoginPage) {
+    return NextResponse.redirect(new URL("/admin", req.url));
   }
 
   return NextResponse.next();

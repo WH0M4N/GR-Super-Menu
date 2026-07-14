@@ -1,7 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "../../../../lib/prisma";
+import { verifyAdmin } from "../../../../lib/auth";
 
 export async function POST(req: NextRequest) {
+  if (!(await verifyAdmin())) {
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+  }
+
   try {
     const body = await req.json();
 
