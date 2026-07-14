@@ -30,6 +30,8 @@ export async function POST(req: NextRequest) {
       },
     });
 
+    console.log("food", food);
+
     return NextResponse.json(food, { status: 201 });
   } catch (err) {
     console.error(err);

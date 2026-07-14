@@ -7,22 +7,22 @@ datasource db {
 }
 
 model Food {
-  id            Int      @id @default(autoincrement())
+  id            Int     @id @default(autoincrement())
   title         String
   desc          String?
   image         String?
   category      String
-  isWeeklyOffer Boolean  @default(false)
+  isWeeklyOffer Boolean @default(false)
   baseTaste     String?
   price         Float
 }
 
 model Game {
-  id            Int      @id @default(autoincrement())
+  id            Int     @id @default(autoincrement())
   title         String
   desc          String?
   image         String?
   genre         String
   playerCount   String
-  isWeeklyOffer Boolean  @default(false)
+  isWeeklyOffer Boolean @default(false)
 }
