@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { GAME_GENRES } from "@/data/game";
 import GamePicker from "../components/GamePicker";
 import BackgroundBox from "../components/shared/BackgroundBox";
