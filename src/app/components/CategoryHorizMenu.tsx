@@ -3,10 +3,15 @@ import { Box } from "@mui/material";
 
 interface Props {
   categories: string[];
+  activeCategory: string;
   scrollToCategory: (category: string) => void;
 }
 
-const CategoryHorizMenu = ({ categories, scrollToCategory }: Props) => {
+const CategoryHorizMenu = ({
+  categories,
+  activeCategory,
+  scrollToCategory,
+}: Props) => {
   return (
     <Box
       sx={{
@@ -40,39 +45,44 @@ const CategoryHorizMenu = ({ categories, scrollToCategory }: Props) => {
         direction: "rtl",
       }}
     >
-      {categories.map((category) => (
-        <Box
-          key={category}
-          onClick={() => scrollToCategory(category)}
-          sx={{
-            flexShrink: 0,
-            px: 2,
-            py: 1,
-            borderRadius: 20,
+      {categories.map((category) => {
+        const isActive = activeCategory === category;
 
-            bgcolor: "rgba(255,255,255,0.08)",
-            border: "1px solid #b55a18",
-            backdropFilter: "blur(8px)",
+        return (
+          <Box
+            key={category}
+            onClick={() => scrollToCategory(category)}
+            sx={{
+              flexShrink: 0,
+              px: 2,
+              py: 1,
+              borderRadius: 20,
 
-            cursor: "pointer",
-            whiteSpace: "nowrap",
-            fontWeight: 600,
-            color: "text.primary",
+              bgcolor: isActive ? "#d36a1e" : "rgba(255,255,255,0.08)",
 
-            transition: "all 0.2s",
+              border: isActive ? "3px solid #b55a18" : "1px solid #b55a18",
+              backdropFilter: "blur(8px)",
 
-            display: "flex",
-            alignItems: "center",
+              cursor: "pointer",
+              whiteSpace: "nowrap",
+              fontWeight: 600,
+              color: "text.primary",
 
-            "&:hover": {
-              bgcolor: "rgba(255,255,255,0.15)",
-              transform: "translateY(-1px)",
-            },
-          }}
-        >
-          {category}
-        </Box>
-      ))}
+              transition: "all 0.2s",
+
+              display: "flex",
+              alignItems: "center",
+
+              "&:hover": {
+                bgcolor: isActive ? "#d36a1e" : "rgba(255,255,255,0.15)",
+                transform: "translateY(-1px)",
+              },
+            }}
+          >
+            {category}
+          </Box>
+        );
+      })}
     </Box>
   );
 };

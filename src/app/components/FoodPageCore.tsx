@@ -10,6 +10,7 @@ import categories from "@/data/categories";
 
 const FoodPageCore = ({ foods }: { foods: Food[] }) => {
   const [selectedFood, setSelectedFood] = useState<Food | null>(null);
+  const [activeCategory, setActiveCategory] = useState(categories[0] ?? "");
 
   const mostOrderedFood = useMemo(
     () => foods.find((food) => food.isWeeklyOffer),
@@ -18,6 +19,8 @@ const FoodPageCore = ({ foods }: { foods: Food[] }) => {
 
   // scroll to the selected category
   const scrollToCategory = (category: string) => {
+    setActiveCategory(category);
+
     document.getElementById(`category-${category}`)?.scrollIntoView({
       behavior: "smooth",
       block: "start",
@@ -36,6 +39,7 @@ const FoodPageCore = ({ foods }: { foods: Food[] }) => {
       <CategoryHorizMenu
         categories={categories}
         scrollToCategory={scrollToCategory}
+        activeCategory={activeCategory}
       />
 
       {mostOrderedFood && (
