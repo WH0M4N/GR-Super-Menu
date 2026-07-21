@@ -17,6 +17,7 @@ import { Food } from "@prisma/client";
 import { useState } from "react";
 import { CiFilter } from "react-icons/ci";
 import categories from "@/data/categories";
+import AddFood from "./AddFood";
 
 export default function FoodTable({ foods }: { foods: Food[] }) {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -30,17 +31,20 @@ export default function FoodTable({ foods }: { foods: Food[] }) {
 
   return (
     <Box sx={{ width: "100%", height: "100%" }}>
-      <Typography
-        sx={{
-          color: "text.primary",
-          textAlign: "center",
-          my: 2,
-        }}
-        component="h2"
-        variant="h5"
-      >
-        غذاها🍕
-      </Typography>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <AddFood />
+        <Typography
+          sx={{
+            color: "text.primary",
+            textAlign: "center",
+            my: 2,
+          }}
+          component="h2"
+          variant="h5"
+        >
+          غذاها
+        </Typography>
+      </Box>
       <TableContainer
         component={Box}
         sx={{

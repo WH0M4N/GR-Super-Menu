@@ -11,21 +11,25 @@ import {
 import DeleteModal from "./DeleteModal";
 import EditDialog from "./EditDialog";
 import { Game } from "@prisma/client";
+import AddGame from "./AddGame";
 
 export default function GameTable({ games }: { games: Game[] }) {
   return (
-    <Box sx={{ width: "100%", height: "100%" }}>
-      <Typography
-        sx={{
-          color: "text.primary",
-          textAlign: "center",
-          my: 2,
-        }}
-        component="h2"
-        variant="h5"
-      >
-        بازی ها 🕹️
-      </Typography>
+    <Box sx={{ width: "100%", height: "100%", mt: 2 }}>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <AddGame />
+        <Typography
+          sx={{
+            color: "text.primary",
+            textAlign: "center",
+            my: 2,
+          }}
+          component="h2"
+          variant="h5"
+        >
+          بازی ها
+        </Typography>
+      </Box>
       <TableContainer
         component={Box}
         sx={{

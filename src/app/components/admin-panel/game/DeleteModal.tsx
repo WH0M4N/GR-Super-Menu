@@ -78,7 +78,7 @@ export default function DeleteModal({ game }: { game: Game }) {
         sx={{
           border: "none",
           "& .MuiBox-root": {
-            borderRadius: 0.3,
+            borderRadius: 2,
             border: "none",
           },
           maxWidth: {
@@ -106,8 +106,8 @@ export default function DeleteModal({ game }: { game: Game }) {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              py: 1,
-              gap: 0.8,
+              mt: 2,
+              gap: 2,
             }}
           >
             <Button

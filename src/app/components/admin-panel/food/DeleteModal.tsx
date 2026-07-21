@@ -8,7 +8,7 @@ import { FaTrashAlt } from "react-icons/fa";
 export default function DeleteModal({ food }: { food: Food }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
-  // const [filteredFoods, setFilteredFoods] = useState<Food[]>([]);
+
   const style = {
     position: "absolute",
     top: "50%",
@@ -79,7 +79,7 @@ export default function DeleteModal({ food }: { food: Food }) {
         sx={{
           border: "none",
           "& .MuiBox-root": {
-            borderRadius: 0.3,
+            borderRadius: 2,
             border: "none",
           },
           maxWidth: {
@@ -107,8 +107,8 @@ export default function DeleteModal({ food }: { food: Food }) {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              py: 1,
-              gap: 0.8,
+              mt: 2,
+              gap: 2,
             }}
           >
             <Button

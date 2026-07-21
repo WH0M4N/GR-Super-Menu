@@ -127,7 +127,7 @@ export default function AddGame() {
     <>
       <Button
         onClick={handleClickOpen}
-        size="large"
+        size="medium"
         sx={{
           display: "flex",
           justifyContent: "center",
@@ -139,6 +139,7 @@ export default function AddGame() {
           "&:hover": {
             bgcolor: "btn.lightBlue",
           },
+          height: "40px",
         }}
         variant="outlined"
       >
