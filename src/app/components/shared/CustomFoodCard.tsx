@@ -110,8 +110,8 @@ const CustomCard = ({ food, idx, onImageClick }: Props) => {
               <Typography
                 sx={{
                   fontSize: {
-                    xs: "0.72rem",
-                    sm: "0.8rem",
+                    xs: "0.8rem",
+                    sm: "0.85rem",
                     md: "0.875rem",
                   },
                   lineHeight: "18px",
