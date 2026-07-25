@@ -2,8 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 import { verifyToken } from "../lib/auth";
 
 export async function middleware(req: NextRequest) {
+  const pathname = req.nextUrl.pathname;
+
+  if (pathname === "/white-menu" || pathname === "/white-menu/") {
+    return NextResponse.redirect(new URL("/", req.url));
+  }
+
   const token = req.cookies.get("admin-session")?.value;
-  const isLoginPage = req.nextUrl.pathname === "/admin/login";
+  const isLoginPage = pathname === "/admin/login";
 
   if (!token) {
     if (isLoginPage) {
@@ -29,5 +35,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/admin/:path*", "/white-menu", "/white-menu/"],
 };
