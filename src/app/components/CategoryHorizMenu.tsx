@@ -1,5 +1,6 @@
 "use client";
 import { Box } from "@mui/material";
+import { useEffect, useRef } from "react";
 
 interface Props {
   categories: string[];
@@ -12,8 +13,27 @@ const CategoryHorizMenu = ({
   activeCategory,
   scrollToCategory,
 }: Props) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // useEffect(() => {
+  //   console.log("active cat: ", activeCategory);
+  // }, [activeCategory]);
+
+  useEffect(() => {
+    const activeElement = containerRef.current?.querySelector(
+      `[data-category="${activeCategory}"]`,
+    ) as HTMLElement | null;
+
+    activeElement?.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest",
+    });
+  }, [activeCategory]);
+
   return (
     <Box
+      ref={containerRef}
       sx={{
         position: "fixed",
         top: 5,
@@ -51,6 +71,7 @@ const CategoryHorizMenu = ({
         return (
           <Box
             key={category}
+            data-category={category}
             onClick={() => scrollToCategory(category)}
             sx={{
               flexShrink: 0,
