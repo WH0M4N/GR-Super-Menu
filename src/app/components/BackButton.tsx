@@ -10,7 +10,7 @@ const BackButton = () => {
     <IconButton
       onClick={() => router.back()}
       sx={{
-        width: "40px",
+        width: "38.5px",
         height: "38.5px",
         p: 0.9,
         border: "1px solid",

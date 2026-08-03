@@ -92,7 +92,8 @@ const GamePicker = ({ genres, players, games }: Props) => {
             flexWrap: "wrap",
             mb: "14px",
             gap: "6px",
-            justifyContent: "end",
+            justifyContent: "start",
+            direction: "rtl",
           }}
         >
           {players.map((player) => (

@@ -88,7 +88,7 @@ function MenuCard({ image, title, route }: Props) {
       >
         <span
           style={{
-            fontSize: "24px",
+            fontSize: "18px",
           }}
         >
           {title}

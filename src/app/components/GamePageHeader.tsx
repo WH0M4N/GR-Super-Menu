@@ -1,6 +1,7 @@
 "use client";
 import { Box, Button } from "@mui/material";
 import Link from "next/link";
+import BackButton from "./BackButton";
 
 export default function GamePageHeader() {
   return (
@@ -11,9 +12,19 @@ export default function GamePageHeader() {
         justifyContent: "space-between",
         alignItems: "center",
         gap: 2,
+        mt: "-20px",
       }}
     >
-      <Box sx={{ width: "100%", display: "flex", justifyContent: "center" }}>
+      <Box
+        sx={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "space-between",
+          px: 1.5,
+        }}
+      >
+        <BackButton />
+
         <Link
           href="/game-picker"
           style={{
@@ -28,22 +39,6 @@ export default function GamePageHeader() {
               display: "flex",
               alignItems: "center",
               bgcolor: "background.paper",
-
-              // animation: "glow 3s ease-in-out infinite",
-              // "@keyframes glow": {
-              //   "0%": {
-              //     borderColor: "#806a25",
-              //     boxShadow: "0 0 0 rgba(255, 213, 79, 0)",
-              //   },
-              //   "50%": {
-              //     borderColor: "#FFD54F",
-              //     boxShadow: "0 0 12px rgba(255, 213, 79, 0.7)",
-              //   },
-              //   "100%": {
-              //     borderColor: "#806a25",
-              //     boxShadow: "0 0 0 rgba(255, 213, 79, 0)",
-              //   },
-              // },
             }}
           >
             !کلیک کن تا بگم چی بازی کنی
