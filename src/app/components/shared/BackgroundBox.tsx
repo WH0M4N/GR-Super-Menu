@@ -1,7 +1,7 @@
 "use client";
 import { Box } from "@mui/material";
-import wavyBg from "../../images/wavy.jpg";
-import wavyBgFlip from "../../images/wavy-flip.jpg";
+import wavyBg from "../../images/wavy.png";
+import wavyBgFlip from "../../images/wavy-flipped.png";
 import { ReactNode } from "react";
 
 const BackgroundBox = ({
