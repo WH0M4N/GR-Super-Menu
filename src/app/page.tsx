@@ -8,7 +8,7 @@ const HomePage = () => {
     <BrickWallBg>
       <>
         <Navbar />
-        {/* Main Content */}
+
         <div style={{ flex: 1 }}>
           <HomePageContainer />
         </div>
