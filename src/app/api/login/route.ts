@@ -1,32 +1,70 @@
 import { NextRequest, NextResponse } from "next/server";
+import argon2 from "argon2";
+import prisma from "../../../../lib/prisma";
 import { createToken } from "../../../../lib/auth";
 
 export async function POST(req: NextRequest) {
-  const { username, password } = await req.json();
+  try {
+    const { username, password } = await req.json();
 
-  if (
-    username !== process.env.ADMIN_USERNAME ||
-    password !== process.env.ADMIN_PASSWORD
-  ) {
-    return NextResponse.json(
-      { message: "Invalid credentials" },
-      { status: 401 },
-    );
+    if (
+      typeof username !== "string" ||
+      typeof password !== "string" ||
+      !username ||
+      !password
+    ) {
+      return NextResponse.json(
+        { message: "Invalid credentials" },
+        { status: 401 },
+      );
+    }
+
+    const admin = await prisma.adminUser.findUnique({
+      where: { username },
+    });
+
+    console.log("LOGIN ATTEMPT");
+    console.log("ADMIN FOUND:", !!admin);
+    console.log("USERNAME LENGTH:", username?.length);
+    console.log("PASSWORD LENGTH:", password?.length);
+
+    if (!admin) {
+      return NextResponse.json(
+        { message: "Invalid credentials" },
+        { status: 401 },
+      );
+    }
+
+    console.log("PASSWORD LENGTH:", password.length);
+    console.log("HASH EXISTS:", !!admin?.passwordHash);
+
+    const passwordValid = await argon2.verify(admin.passwordHash, password);
+
+    if (!passwordValid) {
+      return NextResponse.json(
+        { message: "Invalid credentials" },
+        { status: 401 },
+      );
+    }
+
+    const token = await createToken();
+
+    const response = NextResponse.json({ success: true });
+
+    response.cookies.set({
+      name: "admin-session",
+      value: token,
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      path: "/",
+      maxAge: 60 * 60 * 24 * 7,
+    });
+
+    return response;
+  } catch (error) {
+    console.error("LOGIN ERROR:", error);
+
+    return NextResponse.json({ message: "Invalid request" }, { status: 400 });
   }
-
-  const token = await createToken();
-
-  const response = NextResponse.json({ success: true });
-
-  response.cookies.set({
-    name: "admin-session",
-    value: token,
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
-    path: "/",
-    maxAge: 60 * 60 * 24 * 7,
-  });
-
-  return response;
 }

@@ -26,3 +26,9 @@ model Game {
   playerCount   String
   isWeeklyOffer Boolean @default(false)
 }
+
+model AdminUser {
+  id           Int    @id @default(autoincrement())
+  username     String @unique
+  passwordHash String
+}
