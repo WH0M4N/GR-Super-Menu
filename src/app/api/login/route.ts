@@ -23,20 +23,12 @@ export async function POST(req: NextRequest) {
       where: { username },
     });
 
-    console.log("LOGIN ATTEMPT");
-    console.log("ADMIN FOUND:", !!admin);
-    console.log("USERNAME LENGTH:", username?.length);
-    console.log("PASSWORD LENGTH:", password?.length);
-
     if (!admin) {
       return NextResponse.json(
         { message: "Invalid credentials" },
         { status: 401 },
       );
     }
-
-    console.log("PASSWORD LENGTH:", password.length);
-    console.log("HASH EXISTS:", !!admin?.passwordHash);
 
     const passwordValid = await argon2.verify(admin.passwordHash, password);
 

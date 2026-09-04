@@ -15,10 +15,6 @@ const CategoryHorizMenu = ({
 }: Props) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // useEffect(() => {
-  //   console.log("active cat: ", activeCategory);
-  // }, [activeCategory]);
-
   useEffect(() => {
     const activeElement = containerRef.current?.querySelector(
       `[data-category="${activeCategory}"]`,
