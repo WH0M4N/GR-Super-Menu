@@ -1,6 +1,6 @@
 "use client";
 import { Box } from "@mui/material";
-import brickWal from "../../images/anastase-maragos-lZzlMYL7Q0Y-unsplash.jpg";
+import brickWal from "../../images/brickwallNEW.png.jpeg";
 import { ReactNode } from "react";
 
 const BrickWallBg = ({ children }: { children: ReactNode }) => {
@@ -21,7 +21,7 @@ const BrickWallBg = ({ children }: { children: ReactNode }) => {
           content: '""',
           position: "absolute",
           inset: 0,
-          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          backgroundColor: "rgba(0, 0, 0, 0.65)",
           zIndex: 0,
         },
       }}

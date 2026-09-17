@@ -1,4 +1,4 @@
-import Menues from "./Menues";
+import Floors from "./Floors";
 
 const HomePageContainer = () => {
   return (
@@ -7,7 +7,7 @@ const HomePageContainer = () => {
       <p style={{ fontSize: "20px", margin: 0 }}>
         اول کدوم منو رو میخوای ببینی؟
       </p>
-      <Menues />
+      <Floors />
     </div>
   );
 };
