@@ -1,7 +1,8 @@
 import { StaticImageData } from "next/image";
 import Link from "next/link";
-import games from "../images/boardgame-playing.jpeg";
-import foods from "../images/main-food-section-image.jpg";
+import games from "../images/games.png.jpeg";
+import foods from "../images/food.png.jpeg";
+import BackButton from "./BackButton";
 
 interface Props {
   image: StaticImageData;
@@ -29,6 +30,12 @@ const Menues = () => {
         gap: "32px",
       }}
     >
+      <div style={{ width: "100%", display: "flex", justifyContent: "start" }}>
+        <BackButton />
+      </div>
+      <p style={{ fontWeight: "bolder", fontSize: "22px" }}>
+        کدوم منو رو میخوای ببینی؟
+      </p>
       {menuOptions.map((menu) => (
         <MenuCard
           key={menu.id}
@@ -59,6 +66,8 @@ function MenuCard({ image, title, route }: Props) {
         alignItems: "center",
         borderRadius: "6px",
         overflow: "hidden",
+        border: "1px solid",
+        borderColor: "rgba(255,255,255,0.55)",
       }}
     >
       <div
@@ -66,7 +75,7 @@ function MenuCard({ image, title, route }: Props) {
           content: '""',
           position: "absolute",
           inset: 0,
-          backgroundColor: "rgba(0, 0, 0, 0.7)",
+          backgroundColor: "rgba(0, 0, 0, 0.1)",
           zIndex: 0,
         }}
       />

@@ -1,7 +1,7 @@
 import { StaticImageData } from "next/image";
 import Link from "next/link";
 import mainFloor from "../images/mainFloor.png.jpeg";
-import lundge from "../images/file_00000000010081f4842f8279e475982a.png";
+import lundge from "../images/lundge.png";
 
 interface Props {
   image: StaticImageData;
@@ -127,8 +127,8 @@ function MenuCard({ image, title, route, theme }: Props) {
 
         animation:
           theme === "orange"
-            ? "orangeBorder 2s ease-in-out infinite"
-            : "purpleBorder 2s ease-in-out infinite",
+            ? "orangeBorder 4s ease-in-out infinite"
+            : "purpleBorder 4s ease-in-out infinite",
       }}
     >
       <div
