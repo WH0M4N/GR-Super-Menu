@@ -3,10 +3,19 @@ import FoodTable from "@/app/components/admin-panel/food/FoodTable";
 import GameTable from "@/app/components/admin-panel/game/GameTable";
 import LogoutButton from "@/app/components/LogoutButton";
 import { Box } from "@mui/material";
-import { Food, Game } from "@prisma/client";
+import { Food, Game, LoungeDrink } from "@prisma/client";
 import React from "react";
+import LoungeDrinkTable from "../lounge/LoungeDrinkTable";
 
-const AdminPageCore = ({ foods, games }: { foods: Food[]; games: Game[] }) => {
+const AdminPageCore = ({
+  foods,
+  games,
+  loungeDrinks,
+}: {
+  foods: Food[];
+  games: Game[];
+  loungeDrinks: LoungeDrink[];
+}) => {
   return (
     <>
       <Box
@@ -41,6 +50,7 @@ const AdminPageCore = ({ foods, games }: { foods: Food[]; games: Game[] }) => {
         >
           <FoodTable foods={foods} />
           <GameTable games={games} />
+          <LoungeDrinkTable loungeDrinks={loungeDrinks} />
         </Box>
       </Box>
     </>
