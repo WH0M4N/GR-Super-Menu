@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "../../../../lib/prisma";
 import { verifyAdmin } from "../../../../lib/auth";
+import { saveOptimizedImage } from "@/lib/image";
 
 export async function POST(req: NextRequest) {
   if (!(await verifyAdmin())) {
@@ -18,12 +19,14 @@ export async function POST(req: NextRequest) {
       });
     }
 
+    const imageUrl = body.image ? await saveOptimizedImage(body.image) : null;
+
     const food = await prisma.food.create({
       data: {
         title: body.title,
         desc: body.desc,
         category: body.category,
-        image: body.image,
+        image: imageUrl,
         baseTaste: body.baseTaste,
         isWeeklyOffer: body.isWeeklyOffer,
         price: Number(body.price),

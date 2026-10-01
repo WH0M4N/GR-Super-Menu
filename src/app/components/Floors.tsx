@@ -14,7 +14,7 @@ const Floors = () => {
   const menuOptions = [
     {
       id: "mainFloor",
-      title: "طبقه اصلی",
+      title: "گیم ریپابلیک",
       route: "/mainFloor",
       image: mainFloor,
       theme: "orange" as const,
